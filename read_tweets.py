@@ -37,20 +37,9 @@ def generate_dict(dataset, number):
         data_dict["full_text"] = status.full_text
         data_dict["friends_count"] = data.user.friends_count
         data_dict["screen_name"] = data.user.screen_name
+        data_dict["statuses_count"] = data.user.statuses_count
         data_list.append(data_dict)
     return data_list
-
-
-
-# id = 1272479136133627905
-#
-# # fetching the status with extended tweet_mode
-# status = api.get_status(id, tweet_mode="extended")
-#
-# # fetching the full_text attribute
-# full_text = status.full_text
-
-
 
 
 def average_followers(dataset, number):
@@ -108,14 +97,25 @@ def percentage_tweet_punctuation(dataset, number):
 
 def _words_without_hash_mentions(tweet):
     """Function to get list of words in tweet without hashtags and mentions"""
-    pattern = re.compile(r"\w+")
+    pattern = re.compile(r"\b\w+\b")
     pattern2 = re.compile(r"[#|@]\w+")
+    pattern3 = re.compile(r"https?:\/\/[-a-zA-Z0-9@:%._\+~#=]*\/?\w*")
+    pattern4 = re.compile(r"\b\d+\b")
     word_list = []
     text = tweet["full_text"]
-    for match in re.finditer(pattern, text):
-        word_list.append(match.group())
+    # Remove all links from tweets
+    for match in re.finditer(pattern3, text):
+        text = text.replace(match.group(), "")
+    # Remove all mentions and hashtags
     for match in re.finditer(pattern2, text):
-        word_list.remove(match.group()[1:])
+        text = text.replace(match.group(), "")
+    # Remove all singles numbers
+    for match in re.finditer(pattern4, text):
+        text = text.replace(match.group(), "")
+    for match in re.finditer(pattern, text):
+    # Attach all words except "RT" from "retweet"
+        if match.group() != "RT":
+            word_list.append(match.group())
     return word_list
 
 def longest_word_tweet(tweet):
@@ -135,14 +135,27 @@ def shortest_word_tweet(tweet):
     for word in word_list:
         if len(word) < len(shortest_word):
             shortest_word = word
-    print(word_list)
     return shortest_word
 
+def find_most_statuses(dataset):
+    """Functions to find user with most tweets"""
+    highest_statuses = 0
+    for data in dataset:
+        if data["statuses_count"] > highest_statuses:
+            highest_statuses = data["statuses_count"]
+    return highest_statuses
 
 
+def find_user_statuses(dataset, statuses):
+    """Function to find the username of a certain status count"""
+    username = ""
+    for data in dataset:
+        if data["statuses_count"] == statuses:
+            username += data["screen_name"]
+    return username
 
 tweets = generate_dict(tweets, limit_search)
-pprint(tweets)
+
 # The average number of followers.
 print(f"The average number of followers is {average_followers(tweets, limit_search)}.")
 
@@ -166,12 +179,18 @@ print(f"The percentage of tweets with a mention (@) is {tweets_with(tweets, limi
 print(f"The percentage of tweets containing punctuation is {percentage_tweet_punctuation(tweets, limit_search)}%.")
 
 # The longest word in a tweet.
-print(f"The longest word of this random tweet is: {longest_word_tweet(tweets[randint(0, limit_search -1)])}.")
+random_tweet = tweets[randint(0, limit_search -1)]
+longest_word = longest_word_tweet(random_tweet)
+print(f"The longest word of this random tweet is: {longest_word}.")
 
 # Shortest word in a tweet.
-print(f"The shortest word of this random tweet is: {shortest_word_tweet(tweets[randint(0, limit_search -1)])}.")
-
+shortest_word = shortest_word_tweet(random_tweet)
+print(f"The shortest word of this random tweet is: {shortest_word}.")
 
 # What user has the most tweets in the dataset?
+highest_status = find_most_statuses(tweets)
+highest_status_user = find_user_statuses(tweets, highest_status)
+print(f"The user with the highest status count is: {highest_status_user} with {highest_status} statuses.")
+
 # The average number of tweets from an individual user.
 # The hour with the greatest number of tweets.
