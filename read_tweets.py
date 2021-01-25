@@ -1,11 +1,7 @@
 import os
 import tweepy
-from pprint import pprint
-import json
-import re
-from random import randint
 import sqlalchemy
-from sqlalchemy.sql import text
+import datetime
 
 # fetch the secrets from our virtual environment variables
 CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
@@ -18,13 +14,16 @@ ACCESS_SECRET = os.environ['TWITTER_ACCESS_SECRET']
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
+start_date = datetime.date(2020, 12, 10)
+
+
 # create the connection
-limit_search = 900
+limit_search = 950
 api = tweepy.API(auth)
 tweets = tweepy.Cursor(api.search,
 q="cyberpunk",
 lang="en",
-since=2020-12-10).items(limit_search)
+).items(limit_search)
 
 # Password stored in another file
 file = r"C:\Users\nicol\Dropbox\Coding\password_SQL.txt"
@@ -38,33 +37,51 @@ engine = sqlalchemy.create_engine(f"mysql+pymysql://root:{password}@localhost/tw
 connection = engine.connect()
 metadata = sqlalchemy.MetaData()
 
-tweets_table = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
 
-# For every tweet write in database
-i_total = 1
-i_actual = 1
-for tweet in tweets:
-    query = sqlalchemy.insert(tweets_table)
-    status = api.get_status(tweet.id, tweet_mode="extended")
+# For every tweet write the user_name and other stats in database "users"
+table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
+table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
 
-    tweet_data = {
-        "id": tweet.id,
-        "text": tweet.text,
-        "followers_count": tweet.user.followers_count,
-        "full_text": status.full_text,
-        "friends_count": tweet.user.friends_count,
-        "screen_name": tweet.user.screen_name,
-        "statuses_count": tweet.user.statuses_count,
-    }
 
-    # Let's avoid retweets
-    if tweet.text[:2] != "RT":
-        # This is used mostly to avoid duplicates
-        try:
-            result_proxy = connection.execute(query, tweet_data)
-            i_actual += 1
-            print(f"Entry number {i_actual} of {i_total} done.")
-        except:
-            continue
+# This is to avoid error like max limit reach
+try:
+    i_total = 1
+    i_actual = 1
+    for tweet in tweets:
 
-    i_total += 1
+        status = api.get_status(tweet.id, tweet_mode="extended")
+        data_for_users = {
+            "user_id": tweet.user.id,
+            "followers_count": tweet.user.followers_count,
+            "friends_count": tweet.user.friends_count,
+            "screen_name": tweet.user.screen_name,
+            "statuses_count": tweet.user.statuses_count,
+        }
+
+        data_for_tweets = {
+            "user_id": tweet.user.id,
+            "tweet_id": tweet.id,
+            "created_at": tweet.created_at,
+            "full_text": status.full_text,
+            "screen_name": tweet.user.screen_name,
+        }
+
+        query_tweets = sqlalchemy.insert(table_tweets)
+        query_users = sqlalchemy.insert(table_users)
+
+        # This is to avoid error caused by duplicates, unique users
+        if data_for_tweets["full_text"][:2] != "RT":
+            try:
+                result_proxy = connection.execute(query_tweets, data_for_tweets)
+                result_proxy = connection.execute(query_users, data_for_users)
+                print(f"Entry number {i_actual} of {i_total} done.")
+                i_actual += 1
+            except Exception as e:
+                print(f"Number {i_total} was skipped ({e}).")
+                continue
+        else:
+            print(f"Number {i_total} is an RT and was skipped.")
+        i_total += 1
+
+except Exception as e:
+    print(f"The script ended because of an error ({e}). Please, try again.")
