@@ -18,7 +18,7 @@ start_date = datetime.date(2020, 12, 10)
 
 
 # create the connection
-limit_search = 950
+limit_search =950
 api = tweepy.API(auth)
 tweets = tweepy.Cursor(api.search,
 q="cyberpunk",
@@ -40,7 +40,7 @@ metadata = sqlalchemy.MetaData()
 
 # For every tweet write the user_name and other stats in database "users"
 table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
-table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
+# table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
 
 
 # This is to avoid error like max limit reach
@@ -58,29 +58,30 @@ try:
             "statuses_count": tweet.user.statuses_count,
         }
 
-        data_for_tweets = {
-            "user_id": tweet.user.id,
-            "tweet_id": tweet.id,
-            "created_at": tweet.created_at,
-            "full_text": status.full_text,
-            "screen_name": tweet.user.screen_name,
-        }
+        # data_for_tweets = {
+        #     "user_id": tweet.user.id,
+        #     "tweet_id": tweet.id,
+        #     "created_at": tweet.created_at,
+        #     "full_text": status.full_text,
+        #     "screen_name": tweet.user.screen_name,
+        # }
 
-        query_tweets = sqlalchemy.insert(table_tweets)
+        # query_tweets = sqlalchemy.insert(table_tweets)
         query_users = sqlalchemy.insert(table_users)
 
         # This is to avoid error caused by duplicates, unique users
-        if data_for_tweets["full_text"][:2] != "RT":
-            try:
-                result_proxy = connection.execute(query_tweets, data_for_tweets)
-                result_proxy = connection.execute(query_users, data_for_users)
-                print(f"Entry number {i_actual} of {i_total} done.")
-                i_actual += 1
-            except Exception as e:
-                print(f"Number {i_total} was skipped ({e}).")
-                continue
-        else:
-            print(f"Number {i_total} is an RT and was skipped.")
+        # if data_for_tweets["full_text"][:2] != "RT":
+        try:
+            result_proxy = connection.execute(query_users, data_for_users)
+            # result_proxy = connection.execute(query_tweets, data_for_tweets)
+            print(f"Entry number {i_actual} of {i_total} done.")
+            i_actual += 1
+        except Exception as e:
+            print(f"Number {i_total} was skipped ({e}).")
+            i_total += 1
+            continue
+        # else:
+        #     print(f"Number {i_total} is an RT and was skipped.")
         i_total += 1
 
 except Exception as e:
