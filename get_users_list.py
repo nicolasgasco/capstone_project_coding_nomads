@@ -1,8 +1,6 @@
 import os
 import tweepy
 import sqlalchemy
-import datetime
-from pprint import pprint
 
 # In this file, user_id are fetched filtering tweets written in English and containing the word "cyberpunk"
 
@@ -19,8 +17,8 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 
 # What I'm looking for and how many results
-limit_search = 5
-api = tweepy.API(auth)
+limit_search = 500
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 tweets = tweepy.Cursor(api.search,
 q="cyberpunk",
 lang="en",
@@ -87,8 +85,9 @@ try:
 
     # Either ends on its own or because of an error
     if err_count < 10:
-        print("\nThe search is complete")
+        print("\nThe search is complete.")
     else:
+        # This is mostly triggered when you only get duplicates as results as fresh tweets weren't published yet
         print("\nThe script was interrupted. Too many errors.")
 
 # This is mostly max limit reached error
