@@ -15,6 +15,16 @@ def average_followers(dataset):
     return average
 
 
+def average_followed(dataset):
+    """Function to calculate the average number of friends (followed)"""
+    user_count = len(dataset)
+    followed_count = 0
+    for data in dataset:
+        followed_count += data[4]
+    average = followed_count / user_count
+    return average
+
+
 def average_status_count(dataset):
     """Function to find the average number of statuses"""
     user_count = len(dataset)
@@ -57,6 +67,18 @@ def find_highest_followers(dataset):
             user_name = data[1]
     return highest_followers, user_name
 
+
+def find_highest_friends(dataset):
+    """Functions to find user with most friends"""
+    highest_friends = 0
+    user_name = ""
+    for data in dataset:
+        if data[4] > highest_friends:
+            highest_friends = data[4]
+            user_name = data[1]
+    return highest_friends, user_name
+
+
 def find_users_without_followers(dataset, limit=5):
     """Functions to find users without followers"""
     users_without_followers = []
@@ -64,16 +86,83 @@ def find_users_without_followers(dataset, limit=5):
         if data[3] == 0:
             users_without_followers.append(data[1])
 
-    # If a huge number is passed as an argument
+    # If a huge or too small number is passed as an argument
     if limit > 5 or limit <= 2:
         limit = 5
 
-    length_list_result = len(users_without_followers)
     # If numbers of elements found smaller than limit
+    length_list_result = len(users_without_followers)
     if length_list_result < limit:
         limit = length_list_result
 
     return users_without_followers, limit
+
+
+def find_users_most_followers(dataset, limit=5):
+    """Functions to find users with the biggest number of followers"""
+    users_with_followers = []
+    for data in dataset:
+        user_with_count = (data[3], data[1])
+        users_with_followers.append(user_with_count)
+
+    users_with_followers.sort()
+
+    if limit > len(users_with_followers):
+        limit = len(users_with_followers)
+
+    users_with_followers = users_with_followers[-limit:]
+    result_list = []
+    for user in users_with_followers:
+        result_list.append(f"{user[1]} ({user[0]})")
+
+    return result_list, limit
+
+
+def find_smallest_highest_id(dataset):
+    """Function to find the smallest and highest ID"""
+    smallest_id = [dataset[0][1], int(dataset[0][0])]
+    biggest_id = [dataset[0][1], 0]
+    for data in dataset:
+        if int(data[0]) < smallest_id[1]:
+            smallest_id[0] = data[1]
+            smallest_id[1] = int(data[0])
+
+        elif int(data[0]) > biggest_id[1]:
+            biggest_id[0] = data[1]
+            biggest_id[1] = int(data[0])
+
+    return smallest_id, biggest_id
+
+def find_users_without_followers_but_statuses(dataset, limit_followers=50, limit_statuses=500):
+    """Functions to find users without followers"""
+    users_without_followers = []
+    for data in dataset:
+        if data[3] <= limit_followers and data[2] >= limit_statuses:
+            users_without_followers.append(data[1])
+
+    return len(users_without_followers), limit_statuses, limit_followers
+
+
+def percentage_user_with_less_x_followers(dataset, limit=100):
+    """Function to find the percentage of users with less than x followers"""
+    users_with_less = 0
+    for data in dataset:
+        if data[3] <= limit:
+            users_with_less += 1
+
+    percentage = (users_with_less * 100)/len(dataset)
+    return percentage, limit
+
+
+def average_followers_users_no_friends(dataset, limit=5):
+    """Function to determine the average of followers of users with less than limit friends"""
+    followers_users_no_friends = []
+    for data in dataset:
+        if data[4] <= limit:
+            followers_users_no_friends.append(data[3])
+
+    average = sum(followers_users_no_friends) / len(followers_users_no_friends)
+    return average, limit
 
 
 def average_length_word(dataset):

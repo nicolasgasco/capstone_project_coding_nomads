@@ -18,7 +18,7 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 # What I'm looking for and how many results
 limit_search = 500
-api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, retry_count=3)
 tweets = tweepy.Cursor(api.search,
 q="cyberpunk",
 lang="en",
