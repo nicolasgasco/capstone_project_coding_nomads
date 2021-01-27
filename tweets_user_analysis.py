@@ -23,20 +23,15 @@ metadata = sqlalchemy.MetaData()
 table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
 table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
 
-
-
 # Fetch from user_id column in users table
 query_users = sqlalchemy.select([table_users])
 query_tweets = sqlalchemy.select([table_tweets])
 
-
 result_proxy_users = connection.execute(query_users)
 result_proxy_tweets = connection.execute(query_tweets)
 
-
 result_set_users = result_proxy_users.fetchall()
 result_set_tweets = result_proxy_tweets.fetchall()
-
 
 print(f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n")
 
@@ -53,6 +48,12 @@ print(f"The average number of statuses is {int(average_status_count)}.")
 # The average number of friends
 average_followed_count = average_followed(result_set_users)
 print(f"The average number of friends (followed accounts) is {int(average_followed_count)}.")
+
+# The average followers/friends ratio
+average_followers_friends_ratio = find_average_followers_friends_ratio(result_set_users)
+print(f"The average followers/friends ratio is {int(average_followers_friends_ratio)} followers for every followed account.")
+
+
 print("\n")
 
 # Highest number of tweets
@@ -68,13 +69,14 @@ print(f"The user with the highest followers count is {highest_followers[1]} with
 highest_friends = find_highest_friends(result_set_users)
 print(f"The user with the highest friend count is {highest_friends[1]} with {highest_friends[0]} friends.")
 
-print("\n")
-
+# User with the highest followers/friends ratio
+user_highest_ratio = find_highest_followers_friends_ratio(result_set_users)
+print(f"The user with highest followers/friends ratio ({int(user_highest_ratio[1])} followers for every friend) is {user_highest_ratio[0]} with {user_highest_ratio[2][0]} followers and {user_highest_ratio[2][1]} friends.")
 # # What user has the least statuses in the dataset?
 # lowest_status = find_least_statuses(result_set_users)
 # print(f"The user with the lowest status count is {lowest_status[1]} with {lowest_status[0]} status(es).")
 
-
+print("\n")
 
 # Print 5 users without followers
 user_without_followers = find_users_without_followers(result_set_users)
@@ -96,6 +98,8 @@ print(f"There are {users_no_followers_but_statuses[0]} users with less than {use
 
 users_no_followers_but_statuses = find_users_without_followers_but_statuses(result_set_users, 100, 500)
 print(f"There are {users_no_followers_but_statuses[0]} users with less than {users_no_followers_but_statuses[2]} followers, but at least {users_no_followers_but_statuses[1]} statuses.")
+
+print("\n")
 
 # Percentage of users with less than x followers (default is 100, can also be passed as parameter
 user_with_less_followers = percentage_user_with_less_x_followers(result_set_users, 100)
