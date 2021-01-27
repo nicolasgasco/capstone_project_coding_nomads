@@ -72,13 +72,14 @@ try:
             print(f"Entry number {number_tweets_successful} of {number_tweets_total} done.")
             number_tweets_successful += 1
             number_tweets_total += 1
+            err_count -= 1
 
         except Exception as e:
             print(f"Number {number_tweets_total} was skipped ({e}).")
             number_tweets_total += 1
 
-            # Break after 10 non consecutive errors
-            if err_count >= 10:
+            # Break after 100 non consecutive errors
+            if err_count >= 100:
                 break
             err_count += 1
             continue

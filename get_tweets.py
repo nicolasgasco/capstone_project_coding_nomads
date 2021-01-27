@@ -50,15 +50,28 @@ with open(file_for_already_searched_users) as file:
 
 general_crashes = 0
 user_number = len(list_already_searched_users)
+
+print(f"{user_number} users were already inserted into the database.")
+
 loop = True
+print("The search has begun.")
 while loop:
+    user_number += 1
     # Keep track of users searched
     # user is a tuple, only index 0 is relevant
     for user in result_set:
         # If user was searched already
         if f"{user[0]}\n" in list_already_searched_users:
-            # print(f"User {user_number} was skipped.")
-            continue
+            # This is to break the loop if no users are available. 20000 is an arbitrary value just to be safe
+            if user_number > len(list_already_searched_users)+20000:
+                print("Please fetch more users.")
+                loop = False
+                break
+            else:
+                print(f"User {user_number} was skipped.")
+                user_number += 1
+                continue
+
 
         # Connection created only for new IDs
         else:
@@ -66,11 +79,17 @@ while loop:
             # This is to avoid error triggered by users with protected tweets
             try:
                 # create the connection waiting if max limit is reached
-                api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, retry_count=3)
+                api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, timeout=3, retry_count=3)
                 tweets = api.user_timeline(user[0])
+
             except Exception as e:
-                # print(f"User {user_number} was skipped ({e}).")
+                print(f"User {user_number} was skipped ({e}).")
+                # Write in file so that it can be skipped in the future
+                with open(file_for_already_searched_users, "a") as file:
+                    file.write(f"{user[0]}\n")
+                user_number += 1
                 continue
+
 
             print(f"User number {user_number} ({user[0]}).")
 
@@ -101,26 +120,26 @@ while loop:
                     try:
 
                         result_proxy = connection.execute(query_tweets, data_for_tweets)
-                        # print(f"User number {user_number} ({user[0]}). Tweet {number_tweets_successful} of {number_tweets_total} done.")
+                        print(f"User number {user_number} ({user[0]}). Tweet {number_tweets_successful} of {number_tweets_total} done.")
 
+                        user_number += 1
                         number_tweets_successful += 1
                         number_tweets_total += 1
 
                     # Exception mostly raised for duplicates
                     except Exception as e:
-                        # print(f"User number {user_number}. Tweet {number_tweets_total} was skipped (duplicate).")
+                        print(f"User number {user_number}. Tweet {number_tweets_total} was skipped (duplicate).")
                         number_tweets_total += 1
                         continue
 
                 # Tweets which are RTs, in language other than English or both
                 else:
-                    # print(f"User number {user_number}. Tweet {number_tweets_total} was skipped (RT or language other than English).")
+                    print(f"User number {user_number}. Tweet {number_tweets_total} was skipped (RT or language other than English).")
                     number_tweets_total += 1
 
             # Placed here so that if not all 20 tweets from a user were fetched, user isn't counted
             with open(file_for_already_searched_users, "a") as file:
                 file.write(f"{user[0]}\n")
-            user_number += 1
 
 
 
