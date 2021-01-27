@@ -1,8 +1,8 @@
 import os
 import sqlalchemy
-from tweets_users_functions import *
+from tweets_text_functions import *
 import re
-from random import randint
+from pprint import pprint
 
 # This is where the actual data analysis will take place, using the data in the database
 
@@ -50,8 +50,7 @@ result_set_tweets = result_proxy_tweets.fetchall()
 print(f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n")
 
 
-
-print("\n\nText-related stats:")
+print("Text-related stats:")
 # The average length of tweets (counting words).
 average_length_word = int(average_length_word(result_set_tweets))
 print(f"The average number of words per tweet is {average_length_word}.")
@@ -60,28 +59,50 @@ print(f"The average number of words per tweet is {average_length_word}.")
 average_length_char = int(average_length_char(result_set_tweets))
 print(f"The average number of characters per tweet is {average_length_char}.")
 
-# # The percentage of tweets that have a hashtag (#).
-# print(f"The percentage of tweets with hashtags is {tweets_with(tweets, limit_search, '#')}%.")
+# The percentage of tweets that have a hashtag (#).
+tweets_with_hashtag = tweets_with(result_set_tweets, "#")
+print(f"The percentage of tweets with hashtags is {tweets_with_hashtag}%.")
 #
-# # The percentage of tweets that have a mention (@).
-# print(f"The percentage of tweets with a mention (@) is {tweets_with(tweets, limit_search, '@')}%.")
-#
-# # The 100 most common words.
-#
-# # The 100 most common symbols.
-#
-# # Percentage of tweets that use punctuation.
-# print(f"The percentage of tweets containing punctuation is {percentage_tweet_punctuation(tweets, limit_search)}%.")
-#
-# # The longest word in a tweet.
-# random_tweet = tweets[randint(0, limit_search -1)]
-# longest_word = longest_word_tweet(random_tweet)
-# print(f"The longest word of this random tweet is: {longest_word}.")
-#
-# # Shortest word in a tweet.
-# shortest_word = shortest_word_tweet(random_tweet)
-# print(f"The shortest word of this random tweet is: {shortest_word}.")
-#
+# The percentage of tweets that have a mention (@).
+tweets_with_mention = tweets_with(result_set_tweets, "@")
+print(f"The percentage of tweets with a mention (@) is {tweets_with_mention}%.")
+
+# Percentage of tweets that use punctuation.
+tweets_with_punctuation = percentage_tweet_punctuation(result_set_tweets)
+print(f"The percentage of tweets containing punctuation is {tweets_with_punctuation}%.")
+
+print("\n")
+# The longest word
+longest_word_with_tweet = find_longest_word_tweet(result_set_tweets)
+print(f"The longest word in this set of tweets is: {longest_word_with_tweet[0]} and was found in the following tweet:\n\t{longest_word_with_tweet[1]}.")
+
+words_corpus = create_corpus_with_occurrences_words(result_set_tweets)
+
+# The x most common words. X can be changed, 10 by default
+print("\n")
+most_common_words = find_most_frequent_occurrences_words(words_corpus)
+print(f"The {most_common_words[1]} most common words are:\n", "\n".join(most_common_words[0]) + ".")
 
 
-# # The hour with the greatest number of tweets.
+symbols_corpus = create_corpus_with_occurrences_characters(result_set_tweets)
+# Most frequent symbols. X can be changed, 10 by default
+most_common_symbols = find_most_frequent_occurrences_symbols(symbols_corpus, 10)
+print(f"\nThe {most_common_symbols[1]} most common symbols are:\n", "\n".join(most_common_symbols[0]) + ".")
+
+# Number of tweets containing a specific keywords (not case sensitive)
+tweets_with_keyword = find_num_tweets_containing_keyword(result_set_tweets, "CyBeRpUnK")
+print(f"\nThere are a total of {tweets_with_keyword[0]} tweets containing the word \"{tweets_with_keyword[1].lower()}\".")
+
+
+print("\n")
+# Time analysis
+time_objects_list = create_list_times(result_set_tweets)
+
+# Oldest tweet
+oldest_tweet = time_objects_list[0]
+newest_tweet = time_objects_list[-1]
+print(f"The oldest tweet in this set was written on {oldest_tweet[0].strftime('%d/%m/%Y at %H:%M:%S')}, while the newest on {newest_tweet[0].strftime('%d/%m/%Y at %H:%M:%S')}.")
+
+# # The x hours with the greatest number of tweets. Default value is x=3, but it can be changed.
+most_popular_times = find_most_popular_times(time_objects_list, 3)
+print(f"The {most_popular_times[1]} most popular hours for writing tweets are {', '.join(most_popular_times[0])}")
