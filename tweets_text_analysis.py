@@ -93,16 +93,3 @@ print(f"\nThe {most_common_symbols[1]} most common symbols are:\n", "\n".join(mo
 tweets_with_keyword = find_num_tweets_containing_keyword(result_set_tweets, "CyBeRpUnK")
 print(f"\nThere are a total of {tweets_with_keyword[0]} tweets containing the word \"{tweets_with_keyword[1].lower()}\".")
 
-
-print("\n")
-# Time analysis
-time_objects_list = create_list_times(result_set_tweets)
-
-# Oldest tweet
-oldest_tweet = time_objects_list[0]
-newest_tweet = time_objects_list[-1]
-print(f"The oldest tweet in this set was written on {oldest_tweet[0].strftime('%d/%m/%Y at %H:%M:%S')}, while the newest on {newest_tweet[0].strftime('%d/%m/%Y at %H:%M:%S')}.")
-
-# # The x hours with the greatest number of tweets. Default value is x=3, but it can be changed.
-most_popular_times = find_most_popular_times(time_objects_list, 3)
-print(f"The {most_popular_times[1]} most popular hours for writing tweets are {', '.join(most_popular_times[0])}")
