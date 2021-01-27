@@ -1,6 +1,6 @@
 import os
 import sqlalchemy
-from tweets_functions import *
+from tweets_users_functions import *
 import re
 from random import randint
 
