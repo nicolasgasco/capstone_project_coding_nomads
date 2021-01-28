@@ -87,7 +87,7 @@ while loop:
             # This is to avoid error triggered by users with protected tweets
             try:
                 # create the connection waiting if max limit is reached
-                api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, retry_count=3)
+                api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
                 tweets = api.user_timeline(user[0])
 
             except Exception as e:
