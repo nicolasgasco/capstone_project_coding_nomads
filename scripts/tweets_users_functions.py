@@ -1,7 +1,6 @@
 import os
 import re
 from datetime import datetime
-
 # All functions to use to generate the stats
 
 def average_followers(dataset):
