@@ -1,7 +1,5 @@
-import os
 import sqlalchemy
-from tweets_users_functions import *
-from datetime import datetime
+from scripts.tweets_users_functions import *
 
 # In this file, user data is analyzed
 
@@ -150,7 +148,7 @@ print(f"The user with the smallest ID ({smallest_id[1]}) is {smallest_id[0]}, wh
 
 
 # Write results to file
-file = "results_users_analysis.txt"
+file = "../results_users_analysis.txt"
 lines = [line1, line2, line3, line4, line5, line6, "\n", line7, line8, line9, line10, "\n", line11, line12, "\n", line13,
          line14, "\n", line15, line16, "\n", line17, line18]
 write_results_to_file(file, lines)

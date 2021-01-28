@@ -41,7 +41,7 @@ result_set = result_proxy.fetchall()
 
 # user_ids already searched are stored in a txt file
 # Script can be run several times without duplicating results or wasting time on users which were already fetched
-file_for_already_searched_users = ".users_searched_already.txt"
+file_for_already_searched_users = "../.users_searched_already.txt"
 
 
 # List out of IDs in the file

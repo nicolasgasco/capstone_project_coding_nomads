@@ -1,7 +1,6 @@
-import os
 import sqlalchemy
-from tweets_text_functions import *
-from tweets_users_functions import write_results_to_file
+from scripts.tweets_text_functions import *
+from scripts.tweets_users_functions import write_results_to_file
 
 # Here the actual text from the tweets is analyzed
 
@@ -106,10 +105,12 @@ print("\n")
 # Keywords
 # Number of tweets containing a specific keywords (not case sensitive)
 tweets_with_keyword = find_num_tweets_containing_keyword(result_set_tweets, "CyBeRpUnK")
-line11 = f"There are a total of {tweets_with_keyword[0]} tweets containing the word \"{tweets_with_keyword[1].lower()}\"."
+percentage_tweets_with_keyword = (tweets_with_keyword[0] * 100) / len(result_set_tweets)
+line11 = f"There are a total of {tweets_with_keyword[0]} tweets containing the word \"{tweets_with_keyword[1].lower()}\", " \
+         f"the keyword used to filter users. This makes {round(percentage_tweets_with_keyword, 2)}% of the total tweets."
 print(line11)
 
 
-file = "results_text_analysis.txt"
+file = "../results_text_analysis.txt"
 lines = [line1, line2, line3, line4, "\n", line5, line6, line7, "\n", line8, "\n", line9, line10, "\n", line11]
 write_results_to_file(file, lines)

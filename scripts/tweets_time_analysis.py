@@ -1,7 +1,5 @@
-import os
 import sqlalchemy
-from tweets_time_functions import *
-from pprint import pprint
+from scripts.tweets_time_functions import *
 
 # This is where the actual data analysis will take place, using the data in the database
 
