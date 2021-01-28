@@ -1,0 +1,56 @@
+These results were generated on January, 28 2021 at 15:51:16 (GMT+1).
+
+
+The following stats were obtained by analyzing 33403 tweets from 4749 users.
+
+Text-related stats:
+The average number of words (not counting mentions, hashtags, and URLs) per tweet is 15.
+The average number of characters (counting everything) per tweet is 114.
+
+
+The percentage of tweets with hashtags is 12%.
+The percentage of tweets with a mention (@) is 58%.
+The percentage of tweets containing punctuation is 85.89%.
+
+
+The longest word in this set of tweets is: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH and was found in the following tweet:
+	AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+LETS FUCKING GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO #SKATE4 https://t.co/4M3ykw0Ybs https://t.co/BYLwJMsx2E.
+
+
+The 15 most common words are:
+	the (15449)
+	I (12432)
+	to (11484)
+	a (10551)
+	and (8874)
+	of (7529)
+	it (6897)
+	is (6717)
+	you (6260)
+	in (5688)
+	for (5209)
+	that (4889)
+	on (4259)
+	this (3672)
+	my (3438).
+
+The 15 most common symbols are:
+	/ (47534)
+	. (45125)
+	@ (35128)
+	: (18562)
+	# (17474)
+	, (13379)
+	' (11207)
+	! (8485)
+	_ (6892)
+	? (4944)
+	’ (4911)
+	- (4256)
+	" (2696)
+	) (2105)
+	( (1794).
+
+
+There are a total of 2154 tweets containing the word "cyberpunk".
