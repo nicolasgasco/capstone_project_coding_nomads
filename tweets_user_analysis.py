@@ -105,6 +105,9 @@ users_list_formatted = f"{(', '.join(users_list[:limit-1]))}, and {str(users_lis
 line12 = f"The {users_highest_followers[1]} users with the highest follower counts are {users_list_formatted}."
 print(line12)
 
+
+print("\n")
+# Possible bots
 # Number of users with less than x followers, but y statuses. x, y can be passed as parameters, eg. (dataset, limit_followers=50, limit_statuses=500)
 users_no_followers_but_statuses = find_users_without_followers_but_statuses(result_set_users)
 line13 = f"There are {users_no_followers_but_statuses[0]} users with less than {users_no_followers_but_statuses[2]} followers, but at least {users_no_followers_but_statuses[1]} statuses."
@@ -148,6 +151,6 @@ print(f"The user with the smallest ID ({smallest_id[1]}) is {smallest_id[0]}, wh
 
 # Write results to file
 file = "results_users_analysis.txt"
-lines = [line1, line2, line3, line4, line5, line6, "\n", line7, line8, line9, line10, "\n", line11, line12, line13,
+lines = [line1, line2, line3, line4, line5, line6, "\n", line7, line8, line9, line10, "\n", line11, line12, "\n", line13,
          line14, "\n", line15, line16, "\n", line17, line18]
 write_results_to_file(file, lines)
