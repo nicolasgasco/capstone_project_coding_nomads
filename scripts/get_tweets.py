@@ -31,22 +31,26 @@ metadata = sqlalchemy.MetaData()
 
 # Using both 'tweets' and 'users' tables
 table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
+table_users_to_fix = sqlalchemy.Table("users_to_skip", metadata, autoload=True, autoload_with=engine)
 table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
 
 # Get the users ID from user_id column in 'users' table
-query = sqlalchemy.select([table_users.columns.user_id])
-result_proxy = connection.execute(query)
+query_user = sqlalchemy.select([table_users.columns.user_id])
+result_proxy_users = connection.execute(query_user)
+result_set_users = result_proxy_users.fetchall()
 
-result_set = result_proxy.fetchall()
 
-# user_ids already searched are stored in a txt file
+
+
+# user_ids already searched are stored in table 'users_to_skip' in db
 # Script can be run several times without duplicating results or wasting time on users which were already fetched
-file_for_already_searched_users = ".users_searched_already.txt"
+query_user_to_skip = sqlalchemy.select([table_users_to_fix.columns.user_id])
+result_proxy_users_to_skip = connection.execute(query_user)
+result_set_users_to_skip = result_proxy_users_to_skip.fetchall()
+
+list_already_searched_users = result_set_users_to_skip
 
 
-# List out of IDs in the file
-with open(file_for_already_searched_users) as file:
-    list_already_searched_users = file.readlines()
 
 
 # Start counting users from those already fetched
@@ -63,11 +67,11 @@ while loop:
     user_number += 1
 
     # user is a tuple, only index 0 is relevant
-    for user in result_set:
-        user_number += 1
+    for user in result_set_users:
+
 
         # If user was searched already
-        if f"{user[0]}\n" in list_already_searched_users:
+        if user[0] in list_already_searched_users:
 
             # This is to break the loop if no users are available (but count keeps going on).
             # 20000 is an arbitrary value just to be safe, it's big enough and it takes a couple of seconds to get there
@@ -94,11 +98,12 @@ while loop:
                 # print(f"User {user_number} was skipped ({e}).")
 
                 # Write in file so that it can be skipped in the future
-                with open(file_for_already_searched_users, "a") as file:
-                    file.write(f"{user[0]}\n")
-                continue
+                user_to_add = user[0]
+                query_users_to_skip = sqlalchemy.insert(table_users_to_fix).values(user_id=user_to_add)
+                result_proxy = connection.execute(query_users_to_skip)
 
             print(f"User number {user_number} ({user[0]}).")
+            user_number += 1
 
             # Keeping track of all tweets and those successfully added to database
             number_tweets_total = 1
@@ -126,7 +131,7 @@ while loop:
                     # This is to avoid error caused by duplicates, only unique tweets wanted
                     try:
 
-                        result_proxy = connection.execute(query_tweets, data_for_tweets)
+                        result_proxy_users = connection.execute(query_tweets, data_for_tweets)
                         # print(f"User number {user_number} ({user[0]}). Tweet {number_tweets_successful} of {number_tweets_total} done.")
 
                         number_tweets_successful += 1
@@ -144,5 +149,6 @@ while loop:
                     number_tweets_total += 1
 
             # Placed here so that if not all 20 tweets from a user were fetched, user isn't counted
-            with open(file_for_already_searched_users, "a") as file:
-                file.write(f"{user[0]}\n")
+            user = user[0]
+            query_users_to_skip = sqlalchemy.insert(table_users_to_fix).values(user_id=user_to_add)
+            result_proxy = connection.execute(query_users_to_skip)
