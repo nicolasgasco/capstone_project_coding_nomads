@@ -2,7 +2,7 @@ import os
 import time
 
 
-def create_list_times(dataset):
+def create_ordered_list_times(dataset):
     """Function that returns a list of time objects and relative tweet ID"""
     time_objects = []
     for data in dataset:
@@ -31,10 +31,45 @@ def dict_occurrences_hours(time_objects):
 def find_most_popular_times(time_objects, limit=3):
     """Returns limit number of most popular hours"""
     hours_dict = dict_occurrences_hours(time_objects)
-    hours_list = [(value, key) for key, value in hours_dict.items()]
+    hours_list = [(value, f"{int(key)}:00") for key, value in hours_dict.items()]
     hours_list.sort(reverse=True)
     most_popular_hours = hours_list[:limit]
 
     result = [f"{hour[1]} ({hour[0]})" for hour in most_popular_hours]
 
     return result, limit
+
+
+def find_least_popular_times(time_objects, limit=3):
+    """Returns limit number of least popular hours"""
+    hours_dict = dict_occurrences_hours(time_objects)
+    hours_list = [(value, f"{int(key)}:00") for key, value in hours_dict.items()]
+    hours_list.sort()
+    most_popular_hours = hours_list[:limit]
+
+    result = [f"{hour[1]} ({hour[0]})" for hour in most_popular_hours]
+
+    return result, limit
+
+
+def tweets_per_moment_day(time_objects):
+    """Returns the number of tweets published in specific moments of the day"""
+    work_hours = 0
+    night_hours = 0
+    after_work = 0
+
+    hours_dict = dict_occurrences_hours(time_objects)
+    for time, count in hours_dict.items():
+        if 8 <= int(time) <= 16:
+            work_hours += count
+        elif 17 <= int(time) <= 23:
+            after_work += count
+        else:
+            night_hours += count
+
+    dict_occurrences_daymoment = {}
+    dict_occurrences_daymoment["work_hours"] = work_hours
+    dict_occurrences_daymoment["night_hours"] = night_hours
+    dict_occurrences_daymoment["after_work"] = after_work
+
+    return dict_occurrences_daymoment
