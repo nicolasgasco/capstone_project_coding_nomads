@@ -13,7 +13,7 @@ The results of said statistics can be previewed in the three .txt files in the m
 	
 ### Description
 The project consists of a series of scripts aimed at:
-1. Use tweepy to fetch a list of users who recently wrote a tweet in English containing the word "cyberpunk". This was done to push the set of tweets towards the gaming world.
-2. Use tweepy to fetch the last 20 tweets published by said users. Only tweets in English and that are not retweets of other tweets were accepted.
-3. Use sqlalchemy to store and retrieve all the data in a database.
+1. Use *tweepy* to fetch a list of users who recently wrote a tweet in English containing the word "cyberpunk". This was done to push the set of tweets towards the gaming world.
+2. Use *tweepy* to fetch the last 20 tweets published by said users. Only tweets in English and that are not retweets of other tweets were accepted.
+3. Use *sqlalchemy* to store and retrieve all the data in a database.
 4. Use python scripts to analyze the collected data (one file where the results are printed and written in a .txt file and another with all the actual functions used).
