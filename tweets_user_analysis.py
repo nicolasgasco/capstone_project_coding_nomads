@@ -145,12 +145,9 @@ smallest_id = smallest_highest_id[0]
 highest_id = smallest_highest_id[1]
 print(f"The user with the smallest ID ({smallest_id[1]}) is {smallest_id[0]}, while the biggest ID ({highest_id[1]}) belongs to {highest_id[0]}.")
 
+
+# Write results to file
 file = "results_users_analysis.txt"
-now = datetime.now()
 lines = [line1, line2, line3, line4, line5, line6, "\n", line7, line8, line9, line10, "\n", line11, line12, line13,
          line14, "\n", line15, line16, "\n", line17, line18]
-with open(file,'w') as f:
-    f.write(f"These results were generated on {now.strftime('%B, %d %Y at %H:%M:%S')} (GMT+1)." + "\n\n\n")
-
-    for line in lines:
-        f.writelines(f"{line}\n")
+write_results_to_file(file, lines)

@@ -1,5 +1,6 @@
 import os
 import re
+from datetime import datetime
 
 # All functions to use to generate the stats
 
@@ -231,3 +232,15 @@ def find_average_followers_friends_ratio(dataset):
     average = sum(followers_friends_ratios) / len(followers_friends_ratios)
 
     return average
+
+
+def write_results_to_file(file, lines):
+    """Function to write results to external files"""
+
+    now = datetime.now()
+
+    with open(file,'w') as f:
+        f.write(f"These results were generated on {now.strftime('%B, %d %Y at %H:%M:%S')} (GMT+1)." + "\n\n\n")
+
+        for line in lines:
+            f.writelines(f"{line}\n")
