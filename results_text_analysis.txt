@@ -1,7 +1,7 @@
-These results were generated on January, 28 2021 at 15:51:16 (GMT+1).
+These results were generated on January, 28 2021 at 16:06:34 (GMT+1).
 
 
-The following stats were obtained by analyzing 33403 tweets from 4749 users.
+The following stats were obtained by analyzing 33635 tweets from 5164 users.
 
 Text-related stats:
 The average number of words (not counting mentions, hashtags, and URLs) per tweet is 15.
@@ -19,38 +19,38 @@ LETS FUCKING GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO #SKATE4 https://t.co/4M3ykw
 
 
 The 15 most common words are:
-	the (15449)
-	I (12432)
-	to (11484)
-	a (10551)
-	and (8874)
-	of (7529)
-	it (6897)
-	is (6717)
-	you (6260)
-	in (5688)
-	for (5209)
-	that (4889)
-	on (4259)
-	this (3672)
-	my (3438).
+	the (15552)
+	I (12504)
+	to (11534)
+	a (10596)
+	and (8919)
+	of (7572)
+	it (6932)
+	is (6753)
+	you (6278)
+	in (5738)
+	for (5243)
+	that (4913)
+	on (4289)
+	this (3700)
+	my (3452).
 
 The 15 most common symbols are:
-	/ (47534)
-	. (45125)
-	@ (35128)
-	: (18562)
-	# (17474)
-	, (13379)
-	' (11207)
-	! (8485)
-	_ (6892)
-	? (4944)
-	’ (4911)
-	- (4256)
+	/ (47883)
+	. (45480)
+	@ (35368)
+	: (18677)
+	# (17511)
+	, (13427)
+	' (11261)
+	! (8546)
+	_ (6921)
+	? (4983)
+	’ (4962)
+	- (4269)
 	" (2696)
-	) (2105)
-	( (1794).
+	) (2113)
+	( (1801).
 
 
-There are a total of 2154 tweets containing the word "cyberpunk".
+There are a total of 2167 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 6.44% of the total tweets.
