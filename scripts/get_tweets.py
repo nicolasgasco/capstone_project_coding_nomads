@@ -11,11 +11,9 @@ CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
 ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
 ACCESS_SECRET = os.environ['TWITTER_ACCESS_SECRET']
 
-
 # Authenticate to Twitter
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
 
 # Password stored in another file for safety
 file = r"C:\Users\nicol\Dropbox\Coding\password_SQL.txt"
@@ -34,24 +32,27 @@ table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=e
 table_users_to_fix = sqlalchemy.Table("users_to_skip", metadata, autoload=True, autoload_with=engine)
 table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
 
+# file = ".users_searched_already.txt"
+# with open(file) as f:
+#     user_id = f.readline()
+#     user_to_add = user_id.rstrip
+#     query_users_to_skip = sqlalchemy.insert(table_users_to_fix).values(user_id=user_to_add)
+#     result_proxy = connection.execute(query_users_to_skip)
+
 # Get the users ID from user_id column in 'users' table
 query_user = sqlalchemy.select([table_users.columns.user_id])
 result_proxy_users = connection.execute(query_user)
 result_set_users = result_proxy_users.fetchall()
 
 
-
-
 # user_ids already searched are stored in table 'users_to_skip' in db
 # Script can be run several times without duplicating results or wasting time on users which were already fetched
 query_user_to_skip = sqlalchemy.select([table_users_to_fix.columns.user_id])
-result_proxy_users_to_skip = connection.execute(query_user)
+result_proxy_users_to_skip = connection.execute(query_user_to_skip)
 result_set_users_to_skip = result_proxy_users_to_skip.fetchall()
 
-list_already_searched_users = result_set_users_to_skip
-
-
-
+# This is done to make the whole script more understandable
+list_already_searched_users = [user_id[0] for user_id in result_set_users_to_skip]
 
 # Start counting users from those already fetched
 user_number = len(list_already_searched_users)
@@ -61,6 +62,7 @@ print(f"{user_number} users were already inserted into the database.")
 print("The search has begun.")
 
 # Infinite loop to be able to farm tweets indefinitely
+error_count = 0
 loop = True
 while loop:
     # One user more than those already searched, triggered only once
@@ -69,19 +71,20 @@ while loop:
     # user is a tuple, only index 0 is relevant
     for user in result_set_users:
 
-
         # If user was searched already
         if user[0] in list_already_searched_users:
+            error_count += 1
 
             # This is to break the loop if no users are available (but count keeps going on).
             # 20000 is an arbitrary value just to be safe, it's big enough and it takes a couple of seconds to get there
-            if user_number > len(list_already_searched_users)+20000:
+            if error_count > len(list_already_searched_users) + 20000:
                 print("Please fetch more users.")
                 loop = False
                 break
 
+
             else:
-                # print(f"User {user_number} was skipped.")
+                # print(f"User {user_number} ({user[0]}) was skipped.")
                 continue
 
 
@@ -102,8 +105,6 @@ while loop:
                 query_users_to_skip = sqlalchemy.insert(table_users_to_fix).values(user_id=user_to_add)
                 result_proxy = connection.execute(query_users_to_skip)
 
-            print(f"User number {user_number} ({user[0]}).")
-            user_number += 1
 
             # Keeping track of all tweets and those successfully added to database
             number_tweets_total = 1
@@ -148,7 +149,12 @@ while loop:
                     # print(f"User number {user_number}. Tweet {number_tweets_total} was skipped (RT or language other than English).")
                     number_tweets_total += 1
 
-            # Placed here so that if not all 20 tweets from a user were fetched, user isn't counted
-            user = user[0]
+            # Placed here so that if not all tweets from a user were fetched, user isn't counted
+            user_to_add = user[0]
             query_users_to_skip = sqlalchemy.insert(table_users_to_fix).values(user_id=user_to_add)
             result_proxy = connection.execute(query_users_to_skip)
+
+            print(f"User number {user_number} ({user[0]}).")
+            user_number += 1
+
+
