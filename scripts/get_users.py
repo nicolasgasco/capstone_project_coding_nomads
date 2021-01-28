@@ -41,8 +41,9 @@ metadata = sqlalchemy.MetaData()
 # Store the users in a first table called 'users'
 table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
 
-# No infinite loop needed for this query. Only a relatively small number of users is required
 
+
+# No infinite loop needed for this query. Only a relatively small number of users is required
 # Counting error to stop if there are too many, e.g. when there are no fresh users to fetch
 err_count = 0
 
