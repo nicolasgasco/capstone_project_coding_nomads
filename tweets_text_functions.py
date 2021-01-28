@@ -1,7 +1,6 @@
 import os
 import re
 
-
 def average_length_word(dataset):
     """Function to calculate the average length of tweet in words"""
 
