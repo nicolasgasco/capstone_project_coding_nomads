@@ -1,7 +1,7 @@
-These results were generated on January, 28 2021 at 15:28:04 (GMT+1).
+These results were generated on January, 28 2021 at 15:55:42 (GMT+1).
 
 
-The following stats were obtained by analyzing 32803 tweets from 4749 users.
+The following stats were obtained by analyzing 33578 tweets from 4749 users.
 
 User-related stats:
 
@@ -19,6 +19,8 @@ The user with highest followers/friends ratio (97531 followers for every friend)
 
 These are 5 (or less) users who don't have any followers at all: thedeadian, Tomi_Kallio123, Daniel78026223, NiallOnline2, and Markusso05.
 The 5 users with the highest follower counts are feliciaday (2718512), verge (2759899), Independent (3496438), GameSpot (4235584), and Tesla (7217365).
+
+
 There are 570 users with less than 50 followers, but at least 500 statuses.
 There are 1003 users with less than 100 followers, but at least 500 statuses.
 
