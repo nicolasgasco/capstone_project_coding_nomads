@@ -1,46 +1,46 @@
-These results were generated on January, 28 2021 at 18:44:27 (GMT+1).
+These results were generated on January, 28 2021 at 22:10:13 (GMT+1).
 
 
-The following stats were obtained by analyzing 35022 tweets from 5164 users.
+The following stats were obtained by analyzing 39074 tweets from 6526 users.
 
 
 
 Time-related stats:
-The oldest tweet in this set was written on 21/04/2012 at 12:43:14, while the newest on 28/01/2021 at 17:39:36.
+The oldest tweet in this set was written on 02/10/2009 at 04:29:26, while the newest on 28/01/2021 at 21:07:26.
 
 
 The is how tweets were written throughout the day:
-	- Between 12 PM and 8 AM: 8222 tweets.
-	- Between 8 AM and 4 PM: 13137 tweets.
-	- Between 4 PM and 12 PM: 13663 tweets.
+	- Between 12 PM and 8 AM: 9078 tweets.
+	- Between 8 AM and 4 PM: 14788 tweets.
+	- Between 4 PM and 12 PM: 15208 tweets.
 
 
 This is the number of tweets published for every hour of the day:
-	- 0:00: 1215 tweets
-	- 1:00: 1047 tweets
-	- 2:00: 974 tweets
-	- 3:00: 1024 tweets
-	- 4:00: 1030 tweets
-	- 5:00: 975 tweets
-	- 6:00: 907 tweets
-	- 7:00: 1050 tweets
-	- 8:00: 1309 tweets
-	- 9:00: 1218 tweets
-	- 10:00: 1329 tweets
-	- 11:00: 1352 tweets
-	- 12:00: 1008 tweets
-	- 13:00: 1011 tweets
-	- 14:00: 1608 tweets
-	- 15:00: 1869 tweets
-	- 16:00: 2433 tweets
-	- 17:00: 2388 tweets
-	- 18:00: 2472 tweets
-	- 19:00: 1975 tweets
-	- 20:00: 1903 tweets
-	- 21:00: 1955 tweets
-	- 22:00: 1684 tweets
-	- 23:00: 1286 tweets
+	- 0:00: 1306 tweets
+	- 1:00: 1140 tweets
+	- 2:00: 1091 tweets
+	- 3:00: 1124 tweets
+	- 4:00: 1131 tweets
+	- 5:00: 1088 tweets
+	- 6:00: 1008 tweets
+	- 7:00: 1190 tweets
+	- 8:00: 1455 tweets
+	- 9:00: 1332 tweets
+	- 10:00: 1477 tweets
+	- 11:00: 1476 tweets
+	- 12:00: 1101 tweets
+	- 13:00: 1193 tweets
+	- 14:00: 1902 tweets
+	- 15:00: 2163 tweets
+	- 16:00: 2689 tweets
+	- 17:00: 2687 tweets
+	- 18:00: 2785 tweets
+	- 19:00: 2222 tweets
+	- 20:00: 2119 tweets
+	- 21:00: 2105 tweets
+	- 22:00: 1888 tweets
+	- 23:00: 1402 tweets
 
 
-The 5 most popular hours for writing tweets are 18:00 (2472), 16:00 (2433), 17:00 (2388), 19:00 (1975), and 21:00 (1955).
-The 5 least popular hours for writing tweets are 6:00 (907), 2:00 (974), 5:00 (975), 12:00 (1008), and 13:00 (1011).
+The 5 most popular hours for writing tweets are 18:00 (2785), 16:00 (2689), 17:00 (2687), 19:00 (2222), and 15:00 (2163).
+The 5 least popular hours for writing tweets are 6:00 (1008), 5:00 (1088), 2:00 (1091), 12:00 (1101), and 3:00 (1124).
