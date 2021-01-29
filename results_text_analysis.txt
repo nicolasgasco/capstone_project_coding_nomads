@@ -1,19 +1,19 @@
-These results were generated on January, 28 2021 at 22:02:33 (GMT+1).
+These results were generated on January, 29 2021 at 08:46:11 (GMT+1).
 
 
-The following stats were obtained by analyzing 38853 tweets from 6440 users.
+The following stats were obtained by analyzing 40780 tweets from 6742 users.
 
 Text-related stats:
-There are a total of 2493 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 6.42% of the total tweets.
+There are a total of 2604 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 6.39% of the total tweets.
 
 
 The average number of words (not counting mentions, hashtags, and URLs) per tweet is 15.
-The average number of characters (counting everything) per tweet is 113.
+The average number of characters (counting everything) per tweet is 112.
 
 
 The percentage of tweets with hashtags is 12%.
 The percentage of tweets with a mention (@) is 59%.
-The percentage of tweets containing punctuation is 85.37%.
+The percentage of tweets containing punctuation is 85.18%.
 
 
 The longest word in this set of tweets is: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH and was found in the following tweet:
@@ -22,35 +22,35 @@ LETS FUCKING GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO #SKATE4 https://t.co/4M3ykw
 
 
 The 15 most common words are:
-	the (17987)
-	I (14430)
-	to (13329)
-	a (12138)
-	and (10247)
-	of (8596)
-	it (7980)
-	is (7707)
-	you (7213)
-	in (6628)
-	for (6059)
-	that (5613)
-	on (4954)
-	this (4234)
-	my (3928).
+	the (18679)
+	I (15035)
+	to (13908)
+	a (12657)
+	and (10646)
+	of (8920)
+	it (8321)
+	is (8049)
+	you (7552)
+	in (6888)
+	for (6356)
+	that (5856)
+	on (5170)
+	this (4449)
+	my (4124).
 
 The 15 most common symbols are:
-	/ (53657)
-	. (51935)
-	@ (41121)
-	: (20977)
-	# (19530)
-	, (15434)
-	' (12899)
-	! (9663)
-	_ (7902)
-	? (5785)
-	’ (5665)
-	- (4766)
-	" (3153)
-	) (2408)
-	( (2056).
+	/ (55886)
+	. (54051)
+	@ (43108)
+	: (21869)
+	# (20785)
+	, (15969)
+	' (13354)
+	! (10169)
+	_ (8259)
+	? (6063)
+	’ (5933)
+	- (4932)
+	" (3246)
+	) (2534)
+	( (2158).

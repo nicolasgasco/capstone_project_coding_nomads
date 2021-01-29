@@ -1,2 +1,33 @@
-The following stats were obtained by analyzing 32174 tweets from 4749 users.
+These results were generated on January, 29 2021 at 08:46:17 (GMT+1).
+
+
+The following stats were obtained by analyzing 40780 tweets from 6742 users.
+
 User-related stats:
+
+The average number of followers is 8372.
+The average number of statuses is 29283.
+The average number of friends (followed accounts) is 1175.
+The average followers/friends ratio is 50 followers for every followed account.
+
+
+The user with the highest status count is threadreaderapp with 1628404 statuses.
+The user with the highest followers count is Tesla with 7217365 followers.
+The user with the highest friend count is garettnelson with 522092 friends.
+The user with highest followers/friends ratio (97531 followers for every friend) is Tesla with 7217365 followers and 74 friends.
+
+
+These are 5 (or less) users who don't have any followers at all: thedeadian, Steee_dream, MasterKean96, joubert_walters, and Markusso05.
+The 5 users with the highest follower counts are verge (2759899), RT_com (3008227), Independent (3496438), GameSpot (4235584), and Tesla (7217365).
+
+
+There are 858 users with less than 50 followers, but at least 500 statuses.
+There are 1473 users with less than 100 followers, but at least 500 statuses.
+
+
+On average, users who follow less than 5 other users have 1150 followers.
+On average, users who follow less than 100 other users have 8615 followers.
+
+
+The percentage of users with less than 100 followers is 39%.
+The percentage of users with less than 500 followers is 69%.
