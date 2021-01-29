@@ -1,56 +1,55 @@
-These results were generated on January, 29 2021 at 08:46:11 (GMT+1).
+These results were generated on January, 29 2021 at 18:20:56 (GMT+1).
 
 
-The following stats were obtained by analyzing 40780 tweets from 6742 users.
+The following stats were obtained by analyzing 49721 tweets from 6883 users.
 
 Text-related stats:
-There are a total of 2604 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 6.39% of the total tweets.
+There are a total of 2963 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 5.96% of the total tweets.
 
 
 The average number of words (not counting mentions, hashtags, and URLs) per tweet is 15.
-The average number of characters (counting everything) per tweet is 112.
+The average number of characters (counting everything) per tweet is 111.
 
 
 The percentage of tweets with hashtags is 12%.
 The percentage of tweets with a mention (@) is 59%.
-The percentage of tweets containing punctuation is 85.18%.
+The percentage of tweets containing punctuation is 84.97%.
 
 
-The longest word in this set of tweets is: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH and was found in the following tweet:
-	AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-LETS FUCKING GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO #SKATE4 https://t.co/4M3ykw0Ybs https://t.co/BYLwJMsx2E.
+The longest word in this set of tweets is: asdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd and was found in the following tweet:
+	@Cosmizu my spotify wreapped sucks ;((((((asdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.
 
 
 The 15 most common words are:
-	the (18679)
-	I (15035)
-	to (13908)
-	a (12657)
-	and (10646)
-	of (8920)
-	it (8321)
-	is (8049)
-	you (7552)
-	in (6888)
-	for (6356)
-	that (5856)
-	on (5170)
-	this (4449)
-	my (4124).
+	the (25720)
+	i (20460)
+	to (17191)
+	a (16077)
+	and (13526)
+	it (12212)
+	of (10992)
+	you (10721)
+	is (10151)
+	in (8701)
+	that (8016)
+	for (7943)
+	this (6818)
+	on (6455)
+	my (5632).
 
 The 15 most common symbols are:
-	/ (55886)
-	. (54051)
-	@ (43108)
-	: (21869)
-	# (20785)
-	, (15969)
-	' (13354)
-	! (10169)
-	_ (8259)
-	? (6063)
-	’ (5933)
-	- (4932)
-	" (3246)
-	) (2534)
-	( (2158).
+	/ (67932)
+	. (65497)
+	@ (51868)
+	: (26476)
+	# (25421)
+	, (19044)
+	' (15916)
+	! (12193)
+	_ (9734)
+	? (7348)
+	’ (7319)
+	- (5803)
+	" (3814)
+	) (3044)
+	( (2619).

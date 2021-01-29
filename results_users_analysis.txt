@@ -1,7 +1,7 @@
-These results were generated on January, 29 2021 at 14:37:54 (GMT+1).
+These results were generated on January, 29 2021 at 18:17:52 (GMT+1).
 
 
-The following stats were obtained by analyzing 45728 tweets from 6883 users.
+The following stats were obtained by analyzing 49674 tweets from 4992 users (from a total of 6883 user).
 
 User-related stats:
 
