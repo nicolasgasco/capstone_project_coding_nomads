@@ -1,13 +1,14 @@
 import os
 import time
 
-
+# All the functions used to analyze time-realted stats
 
 def create_ordered_list_times(dataset):
     """Function that returns a list of time objects and relative tweet ID"""
+
     time_objects = []
     for data in dataset:
-        time = data[3]
+        time = data[1]
         tweet_id = data[0]
 
         time_objects.append((time, tweet_id))
@@ -43,6 +44,7 @@ def find_most_popular_times(time_objects, limit=3):
 
 def find_least_popular_times(time_objects, limit=3):
     """Returns limit number of least popular hours"""
+
     hours_dict = dict_occurrences_hours(time_objects)
     hours_list = [(value, f"{int(key)}:00") for key, value in hours_dict.items()]
     hours_list.sort()

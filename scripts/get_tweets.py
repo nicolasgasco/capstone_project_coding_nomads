@@ -12,7 +12,7 @@ list_already_searched_users = [user_id[0] for user_id in result_set_users_to_ski
 
 # Start counting users from those already fetched
 users_number = len(result_set_unique_users)
-print(f"Tweets from {users_number} users were already inserted into the database.")
+print(f"Tweets from {users_number} users were already inserted into the database. {len(result_set_users)-len(result_set_users_to_skip)} remaining before new users must be fetched.")
 
 # Required because sometimes the script works with no input for longer times
 print("Please wait while the search begins.")

@@ -6,6 +6,7 @@ from database_queries import *
 def update_words_occurrences_table(result_set_to_update, corpus_to_insert, table):
     """Function to update a dictionary starting from a result set from a db and a dictionary.
     DB must be update with values in the dictionary"""
+
     corpus = corpus_to_insert
 
     dictionary_to_update = {}
@@ -32,6 +33,7 @@ def update_words_occurrences_table(result_set_to_update, corpus_to_insert, table
 def update_symbols_occurrences_table(result_set_to_update, corpus_to_insert, table):
     """Function to update a dictionary starting from a result set from a db and a dictionary.
     DB must be update with values in the dictionary"""
+
     corpus = corpus_to_insert
 
     dictionary_to_update = {}
@@ -53,6 +55,7 @@ def update_symbols_occurrences_table(result_set_to_update, corpus_to_insert, tab
                 result_proxy = connection.execute(query_update)
 
     print("Update was completed.")
+
 
 def average_length_word(dataset):
     """Function to calculate the average length of tweet in words"""
@@ -210,8 +213,10 @@ def create_corpus_with_occurrences_characters(dataset):
 
     return count
 
+
 def find_most_frequent_occurrences_words(corpus, limit=10):
     """Function to find the highest occurrences of the previously made corpus"""
+
     list_words_occurrences = list(corpus.items())
     list_words_occurrences.sort(key=lambda x:x[1], reverse = True)
     highest_occurrences = list_words_occurrences[:limit]
@@ -223,6 +228,7 @@ def find_most_frequent_occurrences_words(corpus, limit=10):
 
 def find_most_frequent_occurrences_symbols(corpus, limit=10):
     """Function to find the highest occurrences of the previously made corpus"""
+
     pattern = re.compile(r"[^a-zA-Z0-9|\s|ㅤ|️]")
     list_symbols_occurrences = [(value, key) for key, value in corpus.items() if re.fullmatch(pattern, key)]
     list_symbols_occurrences.sort(reverse=True)
@@ -236,6 +242,7 @@ def find_most_frequent_occurrences_symbols(corpus, limit=10):
 
 def find_num_tweets_containing_keyword(dataset, keyword):
     """Function that returns the number of tweets containing the given keyword"""
+
     word_count = 0
     for data in dataset:
         word_list = _words_without_hash_mentions(data)

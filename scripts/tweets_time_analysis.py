@@ -11,7 +11,9 @@ print(line1)
 
 line2 = "Time-related stats:"
 print(line2)
-time_objects_list = create_ordered_list_times(result_set_tweets)
+
+# List used for stats
+time_objects_list = create_ordered_list_times(result_set_tweets_with_time)
 
 # Oldest tweet
 oldest_tweet = time_objects_list[0]

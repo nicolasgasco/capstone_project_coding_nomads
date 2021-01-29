@@ -3,20 +3,18 @@ from scripts.tweets_text_functions import *
 from scripts.tweets_users_functions import write_results_to_file
 from database_queries import *
 
-# Here start the text stats
+# In this script, the text of the tweets is analyzed
+
 line1 = f"The following stats were obtained by analyzing {len(result_set_tweets):,} tweets from {len(result_set_unique_users):,} users. " \
         f"These users were selected from a total of {len(result_set_users):,} user.\n"
 print(line1)
 
-
+# Two corpora necessary for the analysis
 words_corpus = create_corpus_with_occurrences_words(result_set_tweets)
 symbols_corpus = create_corpus_with_occurrences_characters(result_set_tweets)
 
-
-
-# This line of code update the database with the data fetched from the tweets
+# Updating the two databases with the freshest data
 update_words_occurrences_table(result_set_corpus_words_occurrences, words_corpus, table_corpus_words_occurrences)
-
 update_symbols_occurrences_table(result_set_corpus_symbols_occurrences, symbols_corpus, table_corpus_symbols_occurrences)
 
 print("\n")
@@ -64,12 +62,11 @@ print(line8)
 print("\n")
 # The longest word
 longest_word_with_tweet = find_longest_word_tweet(result_set_tweets)
-line9 = f"The longest word in this set of tweets is: {longest_word_with_tweet[0]} and was found in the following tweet:\n\t{longest_word_with_tweet[1]}."
+line9 = f"The longest word in this set of tweets is: {longest_word_with_tweet[0]}.\nIt was found in the following tweet:\n\t{longest_word_with_tweet[1]}."
 print(line9)
 
 
 print("\n")
-
 # The x most common words. X can be changed, 10 by default
 most_common_words = find_most_frequent_occurrences_words(words_corpus, 15)
 line10 = f"The {most_common_words[1]} most common words are:\n" + "\n".join(most_common_words[0]) + "."
@@ -80,8 +77,6 @@ print(line10)
 most_common_symbols = find_most_frequent_occurrences_symbols(symbols_corpus, 15)
 line11 = f"\nThe {most_common_symbols[1]} most common symbols are:\n" + "\n".join(most_common_symbols[0]) + "."
 print(line11)
-
-
 
 
 file = "../results_text_analysis.txt"

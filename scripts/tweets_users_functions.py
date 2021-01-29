@@ -1,10 +1,12 @@
 import os
 import re
 from datetime import datetime
+
 # All functions to use to generate the stats
 
 def average_followers(dataset):
     """Function to calculate the average number of followers"""
+
     user_count = len(dataset)
     followers_count = 0
 

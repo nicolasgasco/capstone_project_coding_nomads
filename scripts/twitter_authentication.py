@@ -1,7 +1,7 @@
 import os
 import tweepy
 
-# This file handles the connection to the Twitter API and avoids repetition of code in other files
+# This file handles the connection to the Twitter API for all the files
 
 # Fetch the secrets and keys/tokens from virtual environment variables
 CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
