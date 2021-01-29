@@ -5,7 +5,7 @@ from database_queries import *
 # In this file, user data is analyzed
 
 # First a general overview of the data
-line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n"
+line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_unique_users)} users (from a total of {len(result_set_users)} user).\n"
 print(line1)
 
 line2 = "User-related stats:\n"

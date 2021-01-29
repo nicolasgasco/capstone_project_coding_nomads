@@ -1,12 +1,12 @@
 import os
 import re
 import sqlalchemy
+from database_queries import *
 
-
-def update_words_occurrences_table(result_set_to_update, result_set_to_insert, table):
+def update_words_occurrences_table(result_set_to_update, corpus_to_insert, table):
     """Function to update a dictionary starting from a result set from a db and a dictionary.
     DB must be update with values in the dictionary"""
-    corpus = create_corpus_with_occurrences_words(result_set_to_insert)
+    corpus = corpus_to_insert
 
     dictionary_to_update = {}
     for result in result_set_to_update:
@@ -28,6 +28,31 @@ def update_words_occurrences_table(result_set_to_update, result_set_to_insert, t
 
     print("Update was completed.")
 
+
+def update_symbols_occurrences_table(result_set_to_update, corpus_to_insert, table):
+    """Function to update a dictionary starting from a result set from a db and a dictionary.
+    DB must be update with values in the dictionary"""
+    corpus = corpus_to_insert
+
+    dictionary_to_update = {}
+    for result in result_set_to_update:
+        dictionary_to_update[result[0]] = result[1]
+
+    for char, occurrence in corpus.items():
+        if char not in dictionary_to_update.keys():
+            data = {"symbol": char, "occurrences": occurrence}
+            query_insert = sqlalchemy.insert(table)
+            try:
+                result_proxy = connection.execute(query_insert, data)
+            except:
+                continue
+
+        else:
+            if occurrence != dictionary_to_update.get(char):
+                query_update = sqlalchemy.update(table).where(table.c.symbol == char).values(occurrences=occurrence)
+                result_proxy = connection.execute(query_update)
+
+    print("Update was completed.")
 
 def average_length_word(dataset):
     """Function to calculate the average length of tweet in words"""
@@ -113,6 +138,8 @@ def _words_without_hash_mentions(tweet):
     pattern3 = re.compile(r"https?:\/\/[-a-zA-Z0-9@:%._\+~#=]*\/?\w*")
     # Digits
     pattern4 = re.compile(r"\b\d+\b")
+    # Punctuation
+    pattern5 = re.compile(r"[!?.,;:_'\"\/\|\[\]{}()<>ﾟ]\w*")
 
     word_list = []
     text = tweet[4]
@@ -125,6 +152,9 @@ def _words_without_hash_mentions(tweet):
         text = text.replace(match.group(), "")
     # Remove all singles numbers
     for match in re.finditer(pattern4, text):
+        text = text.replace(match.group(), "")
+    # Remove all symbols
+    for match in re.finditer(pattern5, text):
         text = text.replace(match.group(), "")
 
     for match in re.finditer(pattern, text):
@@ -169,12 +199,14 @@ def create_corpus_with_occurrences_words(dataset):
 
 def create_corpus_with_occurrences_characters(dataset):
     """Function to create a dictionary of all the characters and their occurrences"""
+    pattern = re.compile(r"[^a-zA-Z0-9|\s|ㅤ|️]")
     count = {}
 
     for data in dataset:
         for character in data[4]:
-            count.setdefault(character, 0)
-            count[character] += 1
+            if re.fullmatch(pattern, character):
+                count.setdefault(character, 0)
+                count[character] += 1
 
     return count
 

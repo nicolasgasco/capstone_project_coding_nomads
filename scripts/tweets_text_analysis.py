@@ -4,9 +4,15 @@ from scripts.tweets_users_functions import write_results_to_file
 from database_queries import *
 
 
-# This line of code update the database with the data fetched from the tweets
-update_words_occurrences_table(result_set_corpus_words_occurrences, result_set_tweets, table_corpus_words_occurrences)
+words_corpus = create_corpus_with_occurrences_words(result_set_tweets)
+symbols_corpus = create_corpus_with_occurrences_characters(result_set_tweets)
 
+
+
+# This line of code update the database with the data fetched from the tweets
+update_words_occurrences_table(result_set_corpus_words_occurrences, words_corpus, table_corpus_words_occurrences)
+
+update_symbols_occurrences_table(result_set_corpus_symbols_occurrences, symbols_corpus, table_corpus_symbols_occurrences)
 
 # Here start the text stats
 line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n"
@@ -63,15 +69,12 @@ print(line9)
 
 print("\n")
 
-
-
 # The x most common words. X can be changed, 10 by default
 most_common_words = find_most_frequent_occurrences_words(words_corpus, 15)
 line10 = f"The {most_common_words[1]} most common words are:\n" + "\n".join(most_common_words[0]) + "."
 print(line10)
 
 
-symbols_corpus = create_corpus_with_occurrences_characters(result_set_tweets)
 # Most frequent symbols. X can be changed, 10 by default
 most_common_symbols = find_most_frequent_occurrences_symbols(symbols_corpus, 15)
 line11 = f"\nThe {most_common_symbols[1]} most common symbols are:\n" + "\n".join(most_common_symbols[0]) + "."
