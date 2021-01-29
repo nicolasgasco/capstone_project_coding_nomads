@@ -50,7 +50,6 @@ print(line1)
 
 line2 = "Text-related stats:"
 print(line2)
-Chan
 
 # Keywords
 # Number of tweets containing a specific keywords (not case sensitive)
