@@ -33,6 +33,16 @@ def select_distinct_userid_from_db(table_name):
 
     return result_set
 
+def select_two_columns_from_db(table_name):
+    """Function to fetch all unique results from the user_id column of a db table"""
+    table = sqlalchemy.Table(table_name, metadata, autoload=True, autoload_with=engine)
+    query = sqlalchemy.select([table.columns.tweet_id, table.columns.created_at])
+    result_proxy = connection.execute(query)
+    result_set = result_proxy.fetchall()
+
+    return result_set
+
+
 
 # I need these tables to be explicitly declared for other scripts in the project
 # Table with all the words contained in tweets + the times the occur
@@ -61,6 +71,7 @@ result_set_users_to_skip = select_all_from_db("users_to_skip")
 # Special filter of the tweets table: unique user_id (= effective number of profiles used)
 result_set_unique_users = select_distinct_userid_from_db("tweets")
 
+result_set_tweets_with_time = select_two_columns_from_db("tweets")
 
 
 
