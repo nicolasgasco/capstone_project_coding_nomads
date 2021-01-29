@@ -11,28 +11,57 @@ connection = engine.connect()
 metadata = sqlalchemy.MetaData()
 
 
-# Tables
+def select_all_from_db(table_name):
+    """Function to fetch results from a db"""
+    table = sqlalchemy.Table(table_name, metadata, autoload=True, autoload_with=engine)
+    query = sqlalchemy.select([table])
+    result_proxy = connection.execute(query)
+    result_set = result_proxy.fetchall()
+
+    return result_set
+
+
+def select_distinct_userid_from_db(table_name):
+    """Function to fetch results from a db"""
+    table = sqlalchemy.Table(table_name, metadata, autoload=True, autoload_with=engine)
+    query = sqlalchemy.select([table.columns.user_id]).distinct()
+    result_proxy = connection.execute(query)
+    result_set = result_proxy.fetchall()
+
+    return result_set
+
+
+
+
+# Need these two for another script
 table_corpus_words_occurrences = sqlalchemy.Table("corpus_words_occurrences", metadata, autoload=True, autoload_with=engine)
+table_corpus_symbols_occurrences = sqlalchemy.Table("corpus_symbols_occurrences", metadata, autoload=True, autoload_with=engine)
 table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
 table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
-table_users_to_fix = sqlalchemy.Table("users_to_skip", metadata, autoload=True, autoload_with=engine)
+table_users_to_skip = sqlalchemy.Table("users_to_skip", metadata, autoload=True, autoload_with=engine)
 
 
 # Queries
-query_tweets = sqlalchemy.select([table_tweets])
-query_users = sqlalchemy.select([table_users])
-query_user_to_skip = sqlalchemy.select([table_users_to_fix]) # .columns.user_id]
-query_corpus_words_occurrences = sqlalchemy.select([table_corpus_words_occurrences])
+# Counting the unique users who published the tweets fetched
+# query_unique_users = sqlalchemy.select([table_tweets.columns.user_id]).distinct()
 
 # Result proxies
-result_proxy_corpus_words_occurrences = connection.execute(query_corpus_words_occurrences)
-result_proxy_tweets = connection.execute(query_tweets)
-result_proxy_users = connection.execute(query_users)
-result_proxy_users_to_skip = connection.execute(query_user_to_skip)
+# result_proxy_unique_users = connection.execute(query_unique_users)
+
 
 # Result sets
-result_set_corpus_words_occurrences = result_proxy_corpus_words_occurrences.fetchall()
-result_set_tweets = result_proxy_tweets.fetchall()
-result_set_users = result_proxy_users.fetchall()
-result_set_users_to_skip = result_proxy_users_to_skip.fetchall()
+result_set_corpus_words_occurrences = select_all_from_db("corpus_words_occurrences")
+result_set_corpus_symbols_occurrences = select_all_from_db("corpus_symbols_occurrences")
+result_set_tweets = select_all_from_db("tweets")
+result_set_users = select_all_from_db("users")
+result_set_users_to_skip = select_all_from_db("users_to_skip")
+result_set_unique_users = select_distinct_userid_from_db("tweets")
+
+
+
+
+
+
+
+
 

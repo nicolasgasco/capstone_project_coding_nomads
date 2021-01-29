@@ -29,7 +29,6 @@ number_tweets_successful = 1
 # for every tweet found in the query
 for tweet in tweets:
 
-    # We only care about users and user stats, no text
     # Dictionary matching db table pattern
     data_for_users = {
         "user_id": tweet.user.id,
