@@ -1,20 +1,12 @@
 import os
 import tweepy
 import sqlalchemy
+from database_queries import *
+from twitter_authentication import *
+
 
 # In this file, user_id are fetched filtering the newest tweets written in English and containing the word "cyberpunk"
 # The keyword will give the dataset a faint direction towards the world of gaming
-
-# Fetch the secrets and keys/tokens from virtual environment variables
-CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-ACCESS_SECRET = os.environ['TWITTER_ACCESS_SECRET']
-
-
-# Authenticate to Twitter
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 
 # Query with parameters, search for 500 users at a time
@@ -24,23 +16,6 @@ tweets = tweepy.Cursor(api.search,
 q="cyberpunk",
 lang="en",
 ).items(limit_search)
-
-
-# Password stored in another file for safety
-file = r"C:\Users\nicol\Dropbox\Coding\password_SQL.txt"
-with open(file) as f:
-    password = f.read()
-    password = password.replace("\"", "").strip()
-
-# Connecting to database used for project
-engine = sqlalchemy.create_engine(f"mysql+pymysql://root:{password}@localhost/tweetsdb")
-connection = engine.connect()
-metadata = sqlalchemy.MetaData()
-
-
-# Store the users in a first table called 'users'
-table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
-
 
 
 # No infinite loop needed for this query. Only a relatively small number of users is required

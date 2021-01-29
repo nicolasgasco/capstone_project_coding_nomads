@@ -2,54 +2,11 @@ import os
 import tweepy
 import sqlalchemy
 import time
+from database_queries import *
+from twitter_authentication import *
+
 
 # For every user fetched in get_user.py, the last 20 tweets are retrieved (only if written in English and if not an RT)
-
-# Fetch the secrets and keys/tokens from virtual environment variables
-CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-ACCESS_SECRET = os.environ['TWITTER_ACCESS_SECRET']
-
-# Authenticate to Twitter
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
-# Password stored in another file for safety
-file = r"C:\Users\nicol\Dropbox\Coding\password_SQL.txt"
-with open(file) as f:
-    password = f.read()
-    password = password.replace("\"", "").strip()
-
-
-# Connecting to database used for project
-engine = sqlalchemy.create_engine(f"mysql+pymysql://root:{password}@localhost/tweetsdb")
-connection = engine.connect()
-metadata = sqlalchemy.MetaData()
-
-# Using both 'tweets' and 'users' tables
-table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
-table_users_to_fix = sqlalchemy.Table("users_to_skip", metadata, autoload=True, autoload_with=engine)
-table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
-
-# file = ".users_searched_already.txt"
-# with open(file) as f:
-#     user_id = f.readline()
-#     user_to_add = user_id.rstrip
-#     query_users_to_skip = sqlalchemy.insert(table_users_to_fix).values(user_id=user_to_add)
-#     result_proxy = connection.execute(query_users_to_skip)
-
-# Get the users ID from user_id column in 'users' table
-query_user = sqlalchemy.select([table_users.columns.user_id])
-result_proxy_users = connection.execute(query_user)
-result_set_users = result_proxy_users.fetchall()
-
-
-# user_ids already searched are stored in table 'users_to_skip' in db
-# Script can be run several times without duplicating results or wasting time on users which were already fetched
-query_user_to_skip = sqlalchemy.select([table_users_to_fix.columns.user_id])
-result_proxy_users_to_skip = connection.execute(query_user_to_skip)
-result_set_users_to_skip = result_proxy_users_to_skip.fetchall()
 
 # This is done to make the whole script more understandable
 list_already_searched_users = [user_id[0] for user_id in result_set_users_to_skip]
