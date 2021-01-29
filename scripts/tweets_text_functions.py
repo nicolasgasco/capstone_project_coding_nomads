@@ -216,7 +216,7 @@ def find_most_frequent_occurrences_words(corpus, limit=10):
     list_words_occurrences.sort(key=lambda x:x[1], reverse = True)
     highest_occurrences = list_words_occurrences[:limit]
 
-    highest_occurrences_formatted = [f"\t{occurrence[0]} ({occurrence[1]})" for occurrence in highest_occurrences]
+    highest_occurrences_formatted = [f"\t{occurrence[0]} ({occurrence[1]:,})" for occurrence in highest_occurrences]
 
     return highest_occurrences_formatted, limit
 
@@ -229,7 +229,7 @@ def find_most_frequent_occurrences_symbols(corpus, limit=10):
 
     highest_occurrences = list_symbols_occurrences[:limit]
 
-    highest_occurrences_formatted = [f"\t{occurrence[1]} ({occurrence[0]})" for occurrence in highest_occurrences]
+    highest_occurrences_formatted = [f"\t{occurrence[1]} ({occurrence[0]:,})" for occurrence in highest_occurrences]
 
     return highest_occurrences_formatted, limit
 

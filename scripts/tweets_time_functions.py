@@ -36,7 +36,7 @@ def find_most_popular_times(time_objects, limit=3):
     hours_list.sort(reverse=True)
     most_popular_hours = hours_list[:limit]
 
-    result = [f"{hour[1]} ({hour[0]})" for hour in most_popular_hours]
+    result = [f"{hour[1]} ({hour[0]:,})" for hour in most_popular_hours]
 
     return result, limit
 
@@ -48,7 +48,7 @@ def find_least_popular_times(time_objects, limit=3):
     hours_list.sort()
     most_popular_hours = hours_list[:limit]
 
-    result = [f"{hour[1]} ({hour[0]})" for hour in most_popular_hours]
+    result = [f"{hour[1]} ({hour[0]:,})" for hour in most_popular_hours]
 
     return result, limit
 

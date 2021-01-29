@@ -140,7 +140,7 @@ def find_users_most_followers(dataset, limit=5):
     result_list = []
 
     for user in users_with_followers:
-        result_list.append(f"{user[1]} ({user[0]})")
+        result_list.append(f"{user[1]} ({user[0]:,})")
 
     return result_list, limit
 

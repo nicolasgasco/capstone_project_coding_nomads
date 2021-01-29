@@ -5,7 +5,8 @@ from database_queries import *
 
 # This is where the actual data analysis will take place, using the data in the database
 
-line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n"
+line1 = f"The following stats were obtained by analyzing {len(result_set_tweets):,} tweets from {len(result_set_unique_users):,} users. " \
+        f"These users were selected from a total of {len(result_set_users):,} user.\n"
 print(line1)
 
 line2 = "Time-related stats:"
@@ -23,9 +24,9 @@ print(line3)
 print("\n")
 tweets_moment_day = tweets_per_moment_day(time_objects_list)
 line4 = f"The is how tweets were written throughout the day:\n" \
-      f"\t- Between 12 PM and 8 AM: {tweets_moment_day.get('night_hours')} tweets.\n" \
-      f"\t- Between 8 AM and 4 PM: {tweets_moment_day.get('work_hours')} tweets.\n" \
-      f"\t- Between 4 PM and 12 PM: {tweets_moment_day.get('after_work')} tweets."
+      f"\t- Between 12 PM and 8 AM: {tweets_moment_day.get('night_hours'):,} tweets.\n" \
+      f"\t- Between 8 AM and 4 PM: {tweets_moment_day.get('work_hours'):,} tweets.\n" \
+      f"\t- Between 4 PM and 12 PM: {tweets_moment_day.get('after_work'):,} tweets."
 print(line4)
 
 
@@ -38,7 +39,7 @@ list_hours_tweet_count = [(int(key), value) for key, value in dict_hours_tweet_c
 list_hours_tweet_count.sort()
 
 # This look a bit messy, but only way to make it look good both on terminal and file
-line6 = "\n".join([f"\t- {hour[0]}:00: {hour[1]} tweets" for hour in list_hours_tweet_count])
+line6 = "\n".join([f"\t- {hour[0]}:00: {hour[1]:,} tweets" for hour in list_hours_tweet_count])
 print(line6)
 
 
@@ -52,7 +53,7 @@ print(line7)
 # The x hours with the greatest number of tweets. Default value is x=3, but it can be changed.
 least_popular_times = find_least_popular_times(time_objects_list, 5)
 least_popular_times_formatted = f"{', '.join(least_popular_times[0][:-1])}, and {least_popular_times[0][-1]}"
-line8 = f"The {most_popular_times[1]} least popular hours for writing tweets are {least_popular_times_formatted}."
+line8 = f"The {least_popular_times[1]} least popular hours for writing tweets are {least_popular_times_formatted}."
 print(line8)
 
 

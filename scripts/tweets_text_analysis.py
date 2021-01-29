@@ -3,6 +3,11 @@ from scripts.tweets_text_functions import *
 from scripts.tweets_users_functions import write_results_to_file
 from database_queries import *
 
+# Here start the text stats
+line1 = f"The following stats were obtained by analyzing {len(result_set_tweets):,} tweets from {len(result_set_unique_users):,} users. " \
+        f"These users were selected from a total of {len(result_set_users):,} user.\n"
+print(line1)
+
 
 words_corpus = create_corpus_with_occurrences_words(result_set_tweets)
 symbols_corpus = create_corpus_with_occurrences_characters(result_set_tweets)
@@ -14,11 +19,7 @@ update_words_occurrences_table(result_set_corpus_words_occurrences, words_corpus
 
 update_symbols_occurrences_table(result_set_corpus_symbols_occurrences, symbols_corpus, table_corpus_symbols_occurrences)
 
-# Here start the text stats
-line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n"
-print(line1)
-
-
+print("\n")
 line2 = "Text-related stats:"
 print(line2)
 
@@ -26,7 +27,7 @@ print(line2)
 # Number of tweets containing a specific keywords (not case sensitive)
 tweets_with_keyword = find_num_tweets_containing_keyword(result_set_tweets, "CyBeRpUnK")
 percentage_tweets_with_keyword = (tweets_with_keyword[0] * 100) / len(result_set_tweets)
-line3 = f"There are a total of {tweets_with_keyword[0]} tweets containing the word \"{tweets_with_keyword[1].lower()}\", " \
+line3 = f"There are a total of {tweets_with_keyword[0]:,} tweets containing the word \"{tweets_with_keyword[1].lower()}\", " \
          f"the keyword used to filter users. This makes {round(percentage_tweets_with_keyword, 2)}% of the total tweets."
 print(line3)
 

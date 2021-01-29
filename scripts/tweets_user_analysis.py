@@ -5,7 +5,8 @@ from database_queries import *
 # In this file, user data is analyzed
 
 # First a general overview of the data
-line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_unique_users)} users (from a total of {len(result_set_users)} user).\n"
+line1 = f"The following stats were obtained by analyzing {len(result_set_tweets):,} tweets from {len(result_set_unique_users):,} users. " \
+        f"These users were selected from a total of {len(result_set_users):,} user.\n"
 print(line1)
 
 line2 = "User-related stats:\n"
@@ -14,22 +15,22 @@ print(line2)
 # Average values
 # The average number of followers.
 average_followers_count = average_followers(result_set_users)
-line3 = f"The average number of followers is {int(average_followers_count)}."
+line3 = f"The average number of followers is {int(average_followers_count):,}."
 print(line3)
 
 # The average number of tweets published by users.
 average_status_count = average_status_count(result_set_users)
-line4 = f"The average number of statuses is {int(average_status_count)}."
+line4 = f"The average number of statuses is {int(average_status_count):,}."
 print(line4)
 
 # The average number of friends
 average_followed_count = average_followed(result_set_users)
-line5 = f"The average number of friends (followed accounts) is {int(average_followed_count)}."
+line5 = f"The average number of friends (followed accounts) is {int(average_followed_count):,}."
 print(line5)
 
 # The average followers/friends ratio
 average_followers_friends_ratio = find_average_followers_friends_ratio(result_set_users)
-line6 = f"The average followers/friends ratio is {int(average_followers_friends_ratio)} followers for every followed account."
+line6 = f"The average followers/friends ratio is {int(average_followers_friends_ratio):,} followers for every followed account."
 print(line6)
 
 
@@ -38,22 +39,22 @@ print("\n")
 
 # Highest number of tweets
 highest_status = find_most_statuses(result_set_users)
-line7 = f"The user with the highest status count is {highest_status[1]} with {highest_status[0]} statuses."
+line7 = f"The user with the highest status count is {highest_status[1]} with {highest_status[0]:,} statuses."
 print(line7)
 
 # Highest number of followers
 highest_followers = find_highest_followers(result_set_users)
-line8 = f"The user with the highest followers count is {highest_followers[1]} with {highest_followers[0]} followers."
+line8 = f"The user with the highest followers count is {highest_followers[1]} with {highest_followers[0]:,} followers."
 print(line8)
 
 # Highest number of friends
 highest_friends = find_highest_friends(result_set_users)
-line9 = f"The user with the highest friend count is {highest_friends[1]} with {highest_friends[0]} friends."
+line9 = f"The user with the highest friend count is {highest_friends[1]} with {highest_friends[0]:,} friends."
 print(line9)
 
 # User with the highest followers/friends ratio
 user_highest_ratio = find_highest_followers_friends_ratio(result_set_users)
-line10 = f"The user with highest followers/friends ratio ({int(user_highest_ratio[1])} followers for every friend) is {user_highest_ratio[0]} with {user_highest_ratio[2][0]} followers and {user_highest_ratio[2][1]} friends."
+line10 = f"The user with highest followers/friends ratio ({int(user_highest_ratio[1]):,} followers for every friend) is {user_highest_ratio[0]} with {user_highest_ratio[2][0]:,} followers and {user_highest_ratio[2][1]:,} friends."
 print(line10)
 
 
@@ -83,22 +84,22 @@ print("\n")
 # Possible bots
 # Number of users with less than x followers, but y statuses. x, y can be passed as parameters, eg. (dataset, limit_followers=50, limit_statuses=500)
 users_no_followers_but_statuses = find_users_without_followers_but_statuses(result_set_users)
-line13 = f"There are {users_no_followers_but_statuses[0]} users with less than {users_no_followers_but_statuses[2]} followers, but at least {users_no_followers_but_statuses[1]} statuses."
+line13 = f"There are {users_no_followers_but_statuses[0]:,} users with less than {users_no_followers_but_statuses[2]} followers, but at least {users_no_followers_but_statuses[1]} statuses."
 print(line13)
 
 users_no_followers_but_statuses = find_users_without_followers_but_statuses(result_set_users, 100, 500)
-line14 = f"There are {users_no_followers_but_statuses[0]} users with less than {users_no_followers_but_statuses[2]} followers, but at least {users_no_followers_but_statuses[1]} statuses."
+line14 = f"There are {users_no_followers_but_statuses[0]:,} users with less than {users_no_followers_but_statuses[2]} followers, but at least {users_no_followers_but_statuses[1]} statuses."
 print(line14)
 
 print("\n")
 # Users with few friends
 # Average of followers of users with less than x friends (default is 5, can be changed)
 average_users_no_friends = average_followers_users_no_friends(result_set_users)
-line15 = f"On average, users who follow less than {average_users_no_friends[1]} other users have {int(average_users_no_friends[0])} followers."
+line15 = f"On average, users who follow less than {average_users_no_friends[1]} other users have {int(average_users_no_friends[0]):,} followers."
 print(line15)
 
 average_users_no_friends = average_followers_users_no_friends(result_set_users, 100)
-line16 = f"On average, users who follow less than {average_users_no_friends[1]} other users have {int(average_users_no_friends[0])} followers."
+line16 = f"On average, users who follow less than {average_users_no_friends[1]} other users have {int(average_users_no_friends[0]):,} followers."
 print(line16)
 
 
