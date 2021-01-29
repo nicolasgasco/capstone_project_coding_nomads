@@ -1,33 +1,8 @@
 import sqlalchemy
 from scripts.tweets_users_functions import *
+from database_queries import *
 
 # In this file, user data is analyzed
-
-# Password stored in another file for safety
-file = r"C:\Users\nicol\Dropbox\Coding\password_SQL.txt"
-with open(file) as f:
-    password = f.read()
-    password = password.replace("\"", "").strip()
-
-# Connecting to database
-engine = sqlalchemy.create_engine(f"mysql+pymysql://root:{password}@localhost/tweetsdb")
-connection = engine.connect()
-metadata = sqlalchemy.MetaData()
-
-
-# Using both 'tweets' and users 'tables'
-table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
-table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
-
-# Select both tables
-query_users = sqlalchemy.select([table_users])
-query_tweets = sqlalchemy.select([table_tweets])
-
-result_proxy_users = connection.execute(query_users)
-result_proxy_tweets = connection.execute(query_tweets)
-
-result_set_users = result_proxy_users.fetchall()
-result_set_tweets = result_proxy_tweets.fetchall()
 
 # First a general overview of the data
 line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n"

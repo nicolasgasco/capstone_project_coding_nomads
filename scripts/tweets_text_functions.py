@@ -1,5 +1,33 @@
 import os
 import re
+import sqlalchemy
+
+
+def update_words_occurrences_table(result_set_to_update, result_set_to_insert, table):
+    """Function to update a dictionary starting from a result set from a db and a dictionary.
+    DB must be update with values in the dictionary"""
+    corpus = create_corpus_with_occurrences_words(result_set_to_insert)
+
+    dictionary_to_update = {}
+    for result in result_set_to_update:
+        dictionary_to_update[result[0]] = result[1]
+
+    for word, occurrence in corpus.items():
+        if word not in dictionary_to_update.keys():
+            data = {"word": word, "occurrences": occurrence}
+            query_insert = sqlalchemy.insert(table)
+            try:
+                result_proxy = connection.execute(query_insert, data)
+            except:
+                continue
+
+        else:
+            if occurrence != dictionary_to_update.get(word):
+                query_update = sqlalchemy.update(table).where(table.c.word == word).values(occurrences=occurrence)
+                result_proxy = connection.execute(query_update)
+
+    print("Update was completed.")
+
 
 def average_length_word(dataset):
     """Function to calculate the average length of tweet in words"""
@@ -131,6 +159,7 @@ def create_corpus_with_occurrences_words(dataset):
     for data in dataset:
         word_list = _words_without_hash_mentions(data)
         for word in word_list:
+            word = word.lower()
             # Special cases that I don't how else to filter out
             if word != "s" and word != "t":
                 count.setdefault(word, 0)
@@ -183,3 +212,5 @@ def find_num_tweets_containing_keyword(dataset, keyword):
                 word_count += 1
 
     return word_count, keyword
+
+

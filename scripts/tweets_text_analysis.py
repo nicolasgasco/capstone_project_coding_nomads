@@ -1,49 +1,14 @@
 import sqlalchemy
 from scripts.tweets_text_functions import *
 from scripts.tweets_users_functions import write_results_to_file
-
-# Here the actual text from the tweets is analyzed
-
-# Password stored in another file for security
-file = r"C:\Users\nicol\Dropbox\Coding\password_SQL.txt"
-with open(file) as f:
-    password = f.read()
-    password = password.replace("\"", "").strip()
+from database_queries import *
 
 
-# Connecting to database
-engine = sqlalchemy.create_engine(f"mysql+pymysql://root:{password}@localhost/tweetsdb")
-connection = engine.connect()
-metadata = sqlalchemy.MetaData()
+# This line of code update the database with the data fetched from the tweets
+update_words_occurrences_table(result_set_corpus_words_occurrences, result_set_tweets, table_corpus_words_occurrences)
 
 
-# Using both tweets and users tables
-table_users = sqlalchemy.Table("users", metadata, autoload=True, autoload_with=engine)
-table_tweets = sqlalchemy.Table("tweets", metadata, autoload=True, autoload_with=engine)
-
-
-# Fetch from user_id column in users table
-query_users = sqlalchemy.select([table_users])
-# query_users_columns = sqlalchemy.select([table_users.columns()])
-
-query_tweets = sqlalchemy.select([table_tweets])
-# query_tweets_columns = sqlalchemy.select([table_tweets.columns])
-
-
-result_proxy_users = connection.execute(query_users)
-# result_proxy_users_columns = connection.execute(query_users_columns)
-
-
-result_proxy_tweets = connection.execute(query_tweets)
-# result_proxy_tweets_columns = connection.execute(query_tweets_columns)
-
-
-result_set_users = result_proxy_users.fetchall()
-# result_set_users_columns = result_proxy_users_columns.fetchall()
-
-result_set_tweets = result_proxy_tweets.fetchall()
-# result_set_tweets_columns = result_proxy_tweets_columns.fetchall()
-
+# Here start the text stats
 line1 = f"The following stats were obtained by analyzing {len(result_set_tweets)} tweets from {len(result_set_users)} users.\n"
 print(line1)
 
@@ -97,8 +62,9 @@ print(line9)
 
 
 print("\n")
-# Corpus analysis
-words_corpus = create_corpus_with_occurrences_words(result_set_tweets)
+
+
+
 # The x most common words. X can be changed, 10 by default
 most_common_words = find_most_frequent_occurrences_words(words_corpus, 15)
 line10 = f"The {most_common_words[1]} most common words are:\n" + "\n".join(most_common_words[0]) + "."
