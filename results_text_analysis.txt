@@ -1,10 +1,10 @@
-These results were generated on January, 29 2021 at 18:20:56 (GMT+1).
+These results were generated on January, 29 2021 at 20:07:33 (GMT+1).
 
 
-The following stats were obtained by analyzing 49721 tweets from 6883 users.
+The following stats were obtained by analyzing 51,027 tweets from 5,143 users. These users were selected from a total of 6,883 user.
 
 Text-related stats:
-There are a total of 2963 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 5.96% of the total tweets.
+There are a total of 3,042 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 5.96% of the total tweets.
 
 
 The average number of words (not counting mentions, hashtags, and URLs) per tweet is 15.
@@ -13,43 +13,43 @@ The average number of characters (counting everything) per tweet is 111.
 
 The percentage of tweets with hashtags is 12%.
 The percentage of tweets with a mention (@) is 59%.
-The percentage of tweets containing punctuation is 84.97%.
+The percentage of tweets containing punctuation is 84.91%.
 
 
-The longest word in this set of tweets is: asdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd and was found in the following tweet:
-	@Cosmizu my spotify wreapped sucks ;((((((asdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.
+The longest word in this set of tweets is: GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO and was found in the following tweet:
+	JAZZ TECH BOOK MENTIONS YOKO KANNO LET'S FUCKING GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
 
 
 The 15 most common words are:
-	the (25720)
-	i (20460)
-	to (17191)
-	a (16077)
-	and (13526)
-	it (12212)
-	of (10992)
-	you (10721)
-	is (10151)
-	in (8701)
-	that (8016)
-	for (7943)
-	this (6818)
-	on (6455)
-	my (5632).
+	the (26,385)
+	i (21,000)
+	to (17,686)
+	a (16,462)
+	and (13,931)
+	it (12,496)
+	of (11,252)
+	you (11,025)
+	is (10,438)
+	in (8,920)
+	that (8,226)
+	for (8,123)
+	this (7,045)
+	on (6,606)
+	my (5,760).
 
 The 15 most common symbols are:
-	/ (67932)
-	. (65497)
-	@ (51868)
-	: (26476)
-	# (25421)
-	, (19044)
-	' (15916)
-	! (12193)
-	_ (9734)
-	? (7348)
-	’ (7319)
-	- (5803)
-	" (3814)
-	) (3044)
-	( (2619).
+	/ (69,400)
+	. (67,064)
+	@ (53,298)
+	: (27,060)
+	# (25,776)
+	, (19,502)
+	' (16,383)
+	! (12,548)
+	_ (10,011)
+	? (7,567)
+	’ (7,483)
+	- (5,950)
+	" (3,924)
+	) (3,105)
+	( (2,671).
