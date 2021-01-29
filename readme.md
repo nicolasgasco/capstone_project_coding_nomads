@@ -9,7 +9,7 @@ The aim of the project is providing a series of statistics (e.g. average user co
 The results of said statistics can be previewed in the three .txt files in the main folder of the project:
 - results_text_analysis.txt: stats on the text of the tweets, e.g. most frequently used symbols and longest word in the set.
 - results_time_analysis.txt: stats on the time when the tweets were written, e.g. most popular hours or oldest tweet.
-- results_users_analysis.txt: stats on the users, e.g. users with most followers or average followers/followed accounts ratio
+- results_users_analysis.txt: stats on the users, e.g. users with most followers or average followers/followed accounts ratio.
 	
 ### Description
 The project consists of a series of scripts aimed at:
