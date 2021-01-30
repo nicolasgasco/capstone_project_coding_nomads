@@ -27,7 +27,7 @@ def update_words_occurrences_table(result_set_to_update, corpus_to_insert, table
                 query_update = sqlalchemy.update(table).where(table.c.word == word).values(occurrences=occurrence)
                 result_proxy = connection.execute(query_update)
 
-    print("Update was completed.")
+    print("Update of the word corpus was completed.")
 
 
 def update_symbols_occurrences_table(result_set_to_update, corpus_to_insert, table):
@@ -54,7 +54,7 @@ def update_symbols_occurrences_table(result_set_to_update, corpus_to_insert, tab
                 query_update = sqlalchemy.update(table).where(table.c.symbol == char).values(occurrences=occurrence)
                 result_proxy = connection.execute(query_update)
 
-    print("Update was completed.")
+    print("Update of the symbol corpus was completed.")
 
 
 def average_length_word(dataset):
