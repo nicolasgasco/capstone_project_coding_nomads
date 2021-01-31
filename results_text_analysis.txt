@@ -1,16 +1,16 @@
-These results were generated on January, 30 2021 at 11:06:18 (GMT+1).
+These results were generated on January, 31 2021 at 22:16:57 (GMT+1).
 
 
-The following stats were obtained by analyzing 54,690 tweets from 5,545 users. These users were selected from a total of 7,704 user.
+The following stats were obtained by analyzing 68,295 tweets from 6,919 users. These users were selected from a total of 9,416 user.
 
 
 
-In the tweets, there are 38,587 different words for a total of 805,574 occurrences.
-There are also 1,269 different symbols for a total of 381,485 occurrences.
+In the tweets, there are 43,797 different words for a total of 1,007,338 occurrences.
+There are also 1,485 different symbols for a total of 479,211 occurrences.
 
 
 Text-related stats:
-There are a total of 3,250 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 5.94% of the total tweets.
+There are a total of 4,151 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 6.08% of the total tweets.
 
 
 The average number of words (not counting mentions, hashtags, and URLs) per tweet is 15.
@@ -19,44 +19,44 @@ The average number of characters (counting everything) per tweet is 111.
 
 The percentage of tweets with hashtags is 12%.
 The percentage of tweets with a mention (@) is 59%.
-The percentage of tweets containing punctuation is 85.0%.
+The percentage of tweets containing punctuation is 85.07%.
 
 
-The longest word in this set of tweets is: GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
+The longest word in this set of tweets is: YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
 It was found in the following tweet:
-	JAZZ TECH BOOK MENTIONS YOKO KANNO LET'S FUCKING GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
+	@fckeveryword YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO I agree.
 
 
 The 15 most common words are:
-	the (28,277)
-	i (22,814)
-	to (19,025)
-	a (17,690)
-	and (15,061)
-	it (13,447)
-	of (12,088)
-	you (11,913)
-	is (11,209)
-	in (9,561)
-	that (8,866)
-	for (8,732)
-	this (7,557)
-	on (7,079)
-	my (6,243).
+	the (35,342)
+	i (28,739)
+	to (23,742)
+	a (22,160)
+	and (18,976)
+	it (16,746)
+	of (15,174)
+	you (15,032)
+	is (13,912)
+	in (11,891)
+	that (10,962)
+	for (10,919)
+	this (9,385)
+	on (8,919)
+	my (8,080).
 
 The 15 most common symbols are:
-	/ (73,829)
-	. (71,987)
-	@ (56,868)
-	: (28,761)
-	# (27,330)
-	, (21,221)
-	' (17,802)
-	! (13,544)
-	_ (10,694)
-	? (8,072)
-	’ (7,858)
-	- (6,303)
-	" (4,267)
-	) (3,334)
-	( (2,848).
+	/ (92,551)
+	. (90,459)
+	@ (70,582)
+	: (36,352)
+	# (34,359)
+	, (27,056)
+	' (22,149)
+	! (16,953)
+	_ (13,608)
+	? (9,964)
+	’ (9,608)
+	- (8,021)
+	" (5,392)
+	) (4,315)
+	( (3,621).
