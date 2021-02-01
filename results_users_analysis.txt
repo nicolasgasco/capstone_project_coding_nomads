@@ -1,13 +1,13 @@
-These results were generated on January, 31 2021 at 22:14:14 (GMT+1).
+These results were generated on February, 01 2021 at 15:27:36 (GMT+1).
 
 
-The following stats were obtained by analyzing 68,295 tweets from 6,919 users. These users were selected from a total of 9,416 user.
+The following stats were obtained by analyzing 73,497 tweets from 7,449 users. These users were selected from a total of 10,184 user.
 
 User-related stats:
 
-The average number of followers is 6,943.
-The average number of statuses is 28,255.
-The average number of friends (followed accounts) is 1,093.
+The average number of followers is 6,581.
+The average number of statuses is 27,703.
+The average number of friends (followed accounts) is 1,098.
 The average followers/friends ratio is 39 followers for every followed account.
 
 
@@ -21,13 +21,13 @@ These are 5 (or less) users who don't have any followers at all: thedeadian, kir
 The 5 users with the highest follower counts are verge (2,759,899), RT_com (3,008,227), Independent (3,496,438), GameSpot (4,235,584), and Tesla (7,217,365).
 
 
-There are 1,186 users with less than 50 followers, but at least 500 statuses.
-There are 2,037 users with less than 100 followers, but at least 500 statuses.
+There are 1,302 users with less than 50 followers, but at least 500 statuses.
+There are 2,237 users with less than 100 followers, but at least 500 statuses.
 
 
-On average, users who follow less than 5 other users have 947 followers.
-On average, users who follow less than 100 other users have 6,256 followers.
+On average, users who follow less than 5 other users have 995 followers.
+On average, users who follow less than 100 other users have 5,830 followers.
 
 
-The percentage of users with less than 100 followers is 39%.
+The percentage of users with less than 100 followers is 40%.
 The percentage of users with less than 500 followers is 70%.
