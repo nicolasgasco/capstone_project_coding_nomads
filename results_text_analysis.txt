@@ -1,16 +1,16 @@
-These results were generated on February, 03 2021 at 16:55:40 (GMT+1).
+These results were generated on February, 04 2021 at 15:18:39 (GMT+1).
 
 
-The following stats were obtained by analyzing 91,741 tweets from 9,205 users. These users were selected from a total of 11,997 user.
+The following stats were obtained by analyzing 100,475 tweets from 10,029 users. These users were selected from a total of 13,054 user.
 
 
 
-In the tweets, there are 52,104 different words for a total of 1,377,996 occurrences.
-There are also 1,746 different symbols for a total of 645,474 occurrences.
+In the tweets, there are 54,887 different words for a total of 1,516,093 occurrences.
+There are also 1,829 different symbols for a total of 706,638 occurrences.
 
 
 Text-related stats:
-There are a total of 5,595 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 6.1% of the total tweets.
+There are a total of 6,179 tweets containing the word "cyberpunk", the keyword used to filter users. This makes 6.15% of the total tweets.
 
 
 The average number of words (not counting mentions, hashtags, and URLs) per tweet is 15.
@@ -18,8 +18,8 @@ The average number of characters (counting everything) per tweet is 112.
 
 
 The percentage of tweets with hashtags is 12%.
-The percentage of tweets with a mention (@) is 59%.
-The percentage of tweets containing punctuation is 85.33%.
+The percentage of tweets with a mention (@) is 60%.
+The percentage of tweets containing punctuation is 85.47%.
 
 
 The longest word in this set of tweets is: YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
@@ -28,35 +28,35 @@ It was found in the following tweet:
 
 
 The 15 most common words are:
-	the (48,375)
-	i (39,574)
-	to (32,538)
-	a (30,495)
-	and (26,200)
-	it (23,029)
-	of (20,952)
-	you (20,437)
-	is (18,990)
-	in (16,290)
-	that (15,090)
-	for (14,851)
-	this (12,877)
-	on (12,191)
-	my (10,977).
+	the (53,211)
+	i (43,808)
+	to (35,895)
+	a (33,620)
+	and (28,949)
+	it (25,317)
+	of (23,047)
+	you (22,574)
+	is (20,810)
+	in (17,841)
+	that (16,761)
+	for (16,299)
+	this (14,143)
+	on (13,401)
+	my (12,124).
 
 The 15 most common symbols are:
-	/ (122,159)
-	. (122,071)
-	@ (94,341)
-	: (48,409)
-	# (44,916)
-	, (37,765)
-	' (30,638)
-	! (22,758)
-	_ (18,054)
-	? (13,346)
-	’ (12,952)
-	- (12,136)
-	" (7,432)
-	) (6,187)
-	( (5,163).
+	. (133,629)
+	/ (132,230)
+	@ (103,834)
+	: (52,475)
+	# (49,264)
+	, (41,728)
+	' (33,791)
+	! (25,157)
+	_ (19,863)
+	? (14,699)
+	’ (14,364)
+	- (13,403)
+	" (8,309)
+	) (6,795)
+	( (5,673).

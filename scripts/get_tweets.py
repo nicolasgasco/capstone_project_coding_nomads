@@ -12,13 +12,12 @@ list_already_searched_users = [user_id[0] for user_id in result_set_users_to_ski
 
 # Start counting users from those already fetched
 users_number = len(result_set_unique_users)
-print(f"Tweets from {users_number} users were already inserted into the database. {len(result_set_users)-len(result_set_users_to_skip)} remaining before new users must be fetched.")
+print(f"Tweets from {users_number} users were already inserted into the database. {len(result_set_users)-len(result_set_users_to_skip)} new users remaining before new users must be fetched.")
 
 # Required because sometimes the script works with no input for longer times
 print("Please wait while the search begins.")
 
 # Infinite loop to be able to farm tweets indefinitely
-error_count = 0
 loop = True
 while loop:
     # One user more than those already searched, triggered only once
@@ -28,19 +27,10 @@ while loop:
     for user in result_set_users:
         user = user[0]
 
-        # If user was searched already
+        # If user was
+        # searched already
         if user in list_already_searched_users:
-            error_count += 1
-
-            # This is to break the loop if no users are available (but count keeps going on).
-            # 20000 is an arbitrary value just to be safe, it's big enough and it takes a couple of seconds to get there
-            if error_count > len(list_already_searched_users) + 20000:
-                print("Please fetch more users.")
-                loop = False
-                break
-
-            else:
-                continue
+            continue
 
 
         # Connection created only for new IDs
@@ -48,6 +38,7 @@ while loop:
 
             # This is to avoid error triggered by users with protected tweets
             try:
+
                 # create the connection waiting if max limit is reached
                 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
                 tweets = api.user_timeline(user)
@@ -62,7 +53,6 @@ while loop:
             # Keeping track of all tweets and those successfully added to database
             number_tweets_total = 1
             number_tweets_successful = 1
-            print(f"User number {users_number} ({user}).")
 
             # Analysis of last 20 tweets
             for tweet in tweets:
@@ -101,9 +91,19 @@ while loop:
                 else:
                     number_tweets_total += 1
 
-            # Placed here so that if not all tweets from a user were fetched, user isn't counted
-            user_to_add = user
-            query_users_to_skip = sqlalchemy.insert(table_users_to_skip).values(user_id=user_to_add)
-            result_proxy = connection.execute(query_users_to_skip)
+            print(f"User number {users_number} ({user}).")
 
-            users_number += 1
+            # Placed here so that if not all tweets from a user were fetched, user isn't counted
+            try:
+
+                user_to_add = user
+                query_users_to_skip = sqlalchemy.insert(table_users_to_skip).values(user_id=user_to_add)
+                result_proxy = connection.execute(query_users_to_skip)
+
+                users_number += 1
+
+            # This is triggered when a duplicate is inserted in the users_to_skip database
+            except:
+                print("Please fetch more users.")
+                loop = False
+                break

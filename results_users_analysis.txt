@@ -1,32 +1,32 @@
-These results were generated on February, 03 2021 at 17:07:50 (GMT+1).
+These results were generated on February, 04 2021 at 15:15:17 (GMT+1).
 
 
-The following stats were obtained by analyzing 91,961 tweets from 9,226 users. These users were selected from a total of 11,997 user.
+The following stats were obtained by analyzing 100,475 tweets from 10,029 users. These users were selected from a total of 13,054 user.
 
 User-related stats:
 
-The average number of followers is 7,479.
-The average number of statuses is 28,298.
-The average number of friends (followed accounts) is 1,115.
-The average followers/friends ratio is 43 followers for every followed account.
+The average number of followers is 7,394.
+The average number of statuses is 27,758.
+The average number of friends (followed accounts) is 1,102.
+The average followers/friends ratio is 52 followers for every followed account.
 
 
 The user with the highest status count is paul_cude with 2,295,580 statuses.
 The user with the highest followers count is WIRED with 10,366,980 followers.
 The user with the highest friend count is garettnelson with 522,092 friends.
-The user with highest followers/friends ratio (97,531 followers for every friend) is Tesla with 7,217,365 followers and 74 friends.
+The user with highest followers/friends ratio (128,919 followers for every friend) is Minecraft with 4,383,249 followers and 34 friends.
 
 
 These are 5 (or less) users who don't have any followers at all: Mayra51986, thedeadian, kirill32091, Keepsmiling3112, and Markusso05.
-The 5 users with the highest follower counts are Independent (3,496,438), GameSpot (4,235,584), IndiaToday (5,480,712), Tesla (7,217,365), and WIRED (10,366,980).
+The 5 users with the highest follower counts are GameSpot (4,235,584), Minecraft (4,383,249), IndiaToday (5,480,712), Tesla (7,217,365), and WIRED (10,366,980).
 
 
-There are 1,517 users with less than 50 followers, but at least 500 statuses.
-There are 2,630 users with less than 100 followers, but at least 500 statuses.
+There are 1,638 users with less than 50 followers, but at least 500 statuses.
+There are 2,846 users with less than 100 followers, but at least 500 statuses.
 
 
-On average, users who follow less than 5 other users have 1,436 followers.
-On average, users who follow less than 100 other users have 5,201 followers.
+On average, users who follow less than 5 other users have 1,388 followers.
+On average, users who follow less than 100 other users have 6,380 followers.
 
 
 The percentage of users with less than 100 followers is 39%.
