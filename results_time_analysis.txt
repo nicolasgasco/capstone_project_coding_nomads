@@ -9,7 +9,7 @@ Time-related stats:
 The oldest tweet in this set was written on 31/08/2009 at 03:10:12, while the newest on 04/02/2021 at 14:07:27.
 
 
-The is how tweets were written throughout the day:
+This is how tweets were written throughout the day:
 	- Between 12 PM and 8 AM: 23,291 tweets.
 	- Between 8 AM and 4 PM: 39,884 tweets.
 	- Between 4 PM and 12 PM: 37,300 tweets.
